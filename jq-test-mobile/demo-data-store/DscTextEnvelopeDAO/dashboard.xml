@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dashboard id="dashboard">
+  <column id="1">
+    <panel id="panelTests" title="Panel Tests" type="simple">
+      <link href="/apps/demo/simplePanel.jsf">Simple Panel</link>
+      <link href="/apps/demo/multiplePanels.jsf">Multiple Panels</link>
+      <link href="/apps/demo/dscPanels.jsf">DSC Panels</link>
+    </panel>
+
+    <panel id="componentTests" title="Miscellaneous Tests" type="simple">
+      <link href="/apps/demo/crudList.jsf" refresh="true">CRUD</link>
+      <link href="/apps/demo/ajax.jsf" refresh="true">Ajax</link>
+    </panel>
+
+    <panel id="componentTests" title="Component Tests" type="simple">
+      <link href="/apps/demo/navigationButtons.jsf">Navigation Buttons</link>
+      <link href="/apps/demo/commandButtons.jsf">Command Buttons</link>
+      <link href="/apps/demo/feeds.jsf">RSS Feeds</link>
+    </panel>
+  </column>
+
+  <column id="2">
+    <panel id="tools" title="Tools" type="simple">
+      <link href="/apps/demo/guestBook.jsf" refresh="true">Guest Book</link>
+      <link href="/apps/demo/escapeTool.jsf" refresh="true">Escape Tool</link>
+    </panel>
+
+    <panel id="authTests" title="Auth Tests" type="simple">
+      <link href="/auth/login.jsf" refresh="true">Authentication</link>
+      <link href="/apps/demo/secure/secure1.jsf">Secure Page Test #1</link>
+      <link href="/apps/demo/secure/secure2.jsf">Secure Page Test #2</link>
+    </panel>
+  </column>
+
+  <column id="3">
+    <panel id="links" title="Links" type="simple">
+      <text style="font-style:italic;">Sites</text>
+      <link class="l2" href="http://www.alistapart.com/">A List Apart</link>
+      <link class="l2" href="http://slashdot.org/">Slashdot</link>
+      <link class="l2" href="http://www.reddit.com/">reddit</link>
+
+      <text style="font-style:italic; margin-top:12px;">Podcasts</text>
+      <link class="l2" href="http://thisdeveloperslife.com/">This Developer's Life</link>
+      <link class="l2" href="http://5by5.tv/bigwebshow">The Big Web Show</link>
+      <link class="l2" href="http://www.startupsfortherestofus.com/">Startups For the Rest of Us</link>
+    </panel>
+  </column>
+
+  <column id="3">
+    <panel id="pageTests" title="Page Tests" type="simple">
+      <link href="/apps/demo/multiPageEx1.jsf">Multi-page Example-1</link>
+      <!--link href="/apps/demo/embeddedPage.jsf">Embedded</link-->
+      <!--link href="/apps/demo/nestedPageEx1.jsf">Nested Page</link-->
+    </panel>
+  </column>
+
+</dashboard>

@@ -1,0 +1,71 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ Supports READ and display of the available persisted records plus CREATE new records.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+<ui:composition template="/common/templates/simplePageTemplate.xhtml">
+  <ui:param name="title" value="#{resources['crud.update.header.text']}" />
+  <ui:param name="contentFormId" value="crudUpdateListForm" />
+
+  <!-- HEADER -->
+  <ui:define name="header">
+    <ui:include src="/common/compositions/commandHeader.xhtml">
+      <ui:param name="backLink" value="/apps/demo/dashboard.jsf" />
+      <ui:param name="backButtonActionListener" value="#{crudListBean.backButtonCallback}" />
+      <ui:param name="headerText" value="CRUD" />
+      <ui:param name="headerFormId" value="crudViewerHeaderForm" />
+    </ui:include>
+  </ui:define>
+  <ui:define name="header-toolbar-right">
+    <tzh:outputLink data-icon="plus" styleClass="ui-btn-right" data-transition="#{demoStateBean.flipDataTransition}" value="#{request.contextPath}/apps/demo/crud/createViewer.jsf">
+      New
+    </tzh:outputLink>
+  </ui:define>
+
+  <!-- CONTENT -->
+  <ui:define name="content">
+    <jqmb:basicListView listHeaderText="Available Records" dataFilter="true" dataTheme="#{themeStateBean.model.menuListViewDataTheme}" dataDividertheme="#{themeStateBean.model.menuListViewDividerTheme}">
+      <ui:define name="listBody">
+        <ui:repeat value="#{crudListBean.inputsStateBean.inputRows}" var="row">
+            <li>
+              <tzh:outputLink value="#{request.contextPath}/apps/demo/crud/updateViewer.jsf" data-ajax="true" data-transition="#{demoStateBean.slideDataTransition}">
+                  <f:param name="id" value="#{row.index}" />
+                  #{row.title}
+              </tzh:outputLink>
+            </li>
+        </ui:repeat>
+
+        <tzc:notificationPanel message="No Records Were Found" rendered="#{empty crudListBean.inputsStateBean.inputRows}" style="margin:6px;"/>
+      </ui:define>
+    </jqmb:basicListView>
+  </ui:define>
+
+</ui:composition>
+
+</html>

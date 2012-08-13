@@ -1,0 +1,58 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ Basic header used by most pages
+  ~
+  ~ PARAMS:
+  ~   - headerText: Text rendered in the center header area.
+  ~   - backIcon: icon for the back button
+  ~   - backLabel: label for the back button
+  ~   - backTransition: transition used for back button
+  ~   - position: if using "fixed", the header will be fixed to the top of the viewport, while the page content scrolls freely below.
+  ~   - header-toolbar-right: OPTIONAL toolbar on the right-hand side of the header.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+  <ui:composition>
+    <tzc:ternaryDefault var="standardHeader_backIcon" condition="#{empty backIcon}" valueIfTrue="home" valueIfFalse="#{backIcon}" />
+    <tzc:ternaryDefault var="standardHeader_backLabel" condition="#{empty backLabel}" valueIfTrue="Home" valueIfFalse="#{backLabel}" />
+    <tzc:ternaryDefault var="standardHeader_backTransition" condition="#{empty backTransition}" valueIfTrue="#{demoStateBean.slideDataTransition}" valueIfFalse="#{backTransition}" />
+    <tzc:ternaryDefault var="standardHeader_position" condition="#{empty position}" valueIfTrue="fixed" valueIfFalse="#{position}" />
+
+    <div data-theme="#{themeStateBean.model.pageHeaderDataTheme}" data-role="header" data-position="#{standardHeader_position}">
+      <tzh:outputLink data-transition="#{standardHeader_backTransition}" data-direction="reverse" data-icon="#{standardHeader_backIcon}" rendered="#{not empty backLink and empty backButtonActionListener}" value="#{request.contextPath}#{backLink}">
+        #{standardHeader_backLabel}
+      </tzh:outputLink>
+
+      <h3>#{headerText}</h3>
+
+      <ui:insert name="header-toolbar-right">
+      </ui:insert>
+    </div>
+
+  </ui:composition>
+</html>

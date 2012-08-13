@@ -1,0 +1,59 @@
+
+<f:view
+  xmlns:jsp="http://java.sun.com/JSP/Page"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ A basic JQuery mobile panel.
+  ~
+  ~ PARAMS:
+  ~   - headerText: text for the panel's header.
+  ~   - dataCollapsed: when true, the panel will be collapsed.
+  ~   - dataMini: compact sized version.
+  ~   - dataIconpos: position of the header icon (left | right | top | bottom).
+  ~   - panelBody: region include for the panel's body.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+
+  <html>
+<ui:composition>
+  <tzc:ternaryDefault var="basicPanel_headerText" condition="#{empty headerText}" valueIfTrue="Default Header Text" valueIfFalse="#{headerText}" />
+  <tzc:ternaryDefault var="basicPanel_dataCollapsed" condition="#{empty dataCollapsed}" valueIfTrue="false" valueIfFalse="#{dataCollapsed}" />
+  <tzc:ternaryDefault var="basicPanel_dataMini" condition="#{empty dataMini}" valueIfTrue="false" valueIfFalse="#{dataMini}" />
+  <tzc:ternaryDefault var="basicPanel_dataIconpos" condition="#{empty dataIconpos}" valueIfTrue="left" valueIfFalse="#{dataIconpos}" />
+
+  <div data-role="collapsible" data-collapsed="#{basicPanel_dataCollapsed}" data-mini="#{dataMini}" data-iconpos="#{basicPanel_dataIconpos}">
+    <h3>#{basicPanel_headerText}</h3>
+
+      <ui:insert name="panelBody">
+        Default Panel Body Area.
+      </ui:insert>
+
+  </div>
+
+</ui:composition>
+</html>
+
+</f:view>

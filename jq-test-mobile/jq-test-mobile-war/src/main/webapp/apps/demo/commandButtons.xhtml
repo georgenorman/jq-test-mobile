@@ -1,0 +1,89 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ Demonstrate use of JSF commandButton action. TO DO: Add actionListener.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+<ui:composition template="/common/templates/basicPageTemplate.xhtml">
+  <ui:param name="title" value="#{resources['buttons.header.text']}" />
+
+  <!-- HEADER -->
+  <ui:define name="header">
+    <ui:include src="/common/compositions/standardHeader.xhtml">
+      <ui:param name="backLink" value="/apps/demo/dashboard.jsf" />
+      <ui:param name="headerText" value="#{resources['buttons.header.text']}" />
+    </ui:include>
+  </ui:define>
+
+  <!-- CONTENT -->
+  <ui:define name="content">
+    <tzc:notificationPanel message="#{commandButtonsBean.notificationModel.message}" rendered="#{commandButtonsBean.notificationModel.rendered}"/>
+
+  <tzh:form id="simpleCommandButtonForm" data-ajax="false">
+    <jqmb:basicPanel headerText="Simple Command Buttons" dataMini="true">
+      <ui:define name="panelBody">
+        <div>
+          <tzh:commandButton data-icon="star" data-transition="#{demoStateBean.flipDataTransition}" data-direction="forward" data-mini="true" data-inline="true"
+              action="#{commandButtonsBean.simpleCommandsTestHelper.command1Action}" id="command1" onclick="showPageLoadingIndicator();" value="Command-1"
+              data-theme="#{themeStateBean.model.okButtonDataTheme}" />
+        </div>
+
+        <div>
+          <tzh:commandButton data-icon="grid" data-transition="#{demoStateBean.flipDataTransition}" data-direction="forward" data-mini="true" data-inline="true"
+              action="#{commandButtonsBean.simpleCommandsTestHelper.command2Action}" id="command2" onclick="showPageLoadingIndicator();" value="Command-2"
+              data-theme="#{themeStateBean.model.okButtonDataTheme}" />
+        </div>
+      </ui:define>
+    </jqmb:basicPanel>
+  </tzh:form>
+
+  <tzh:form id="inputsCommandButtonForm" data-ajax="false">
+    <jqmb:basicPanel headerText="Inputs Command Buttons" dataMini="true">
+      <ui:define name="panelBody">
+        <h:messages showSummary="false" showDetail="true" style="border:thin solid #888; color:red; background-color:#ffc; padding-top:6px; padding-bottom:6px;" />
+        <div data-role="fieldcontain">
+          <h:outputLabel for="title" value="* Title:" />
+          <tzh:inputText required="true" name="title" id="title" maxlength="10"  requiredMessage="The 'Title' field is required."
+            value="#{commandButtonsBean.inputCommandsTestHelper.formTestModel.title}"
+            placeholder="Type whatever" data-mini="true" data-theme="#{themeStateBean.model.textFieldHilightDataTheme}" disabled="#{readOnly}" />
+        </div>
+
+        <div>
+          <tzh:commandButton data-icon="check" data-transition="#{demoStateBean.flipDataTransition}" data-direction="forward" data-mini="true" data-inline="true"
+              action="#{commandButtonsBean.inputCommandsTestHelper.command10Action}" id="command10" onclick="showPageLoadingIndicator();" value="Command-10"
+              data-theme="#{themeStateBean.model.okButtonDataTheme}" />
+        </div>
+      </ui:define>
+    </jqmb:basicPanel>
+  </tzh:form>
+
+  </ui:define>
+
+</ui:composition>
+
+</html>

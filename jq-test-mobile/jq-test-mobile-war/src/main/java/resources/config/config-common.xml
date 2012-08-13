@@ -1,0 +1,109 @@
+<!--
+  - This file contains common demo configuration (e.g., info for the about box).
+  -->
+<configuration>
+  <include name="config-environment.xml" />
+
+  <!-- *************************************************************
+       security
+       ************************************************************* -->
+
+  <!-- Application-specific SimpleCipher settings -->
+  <section name="com.thruzero.common.core.security.SimpleCipher">
+    <entry key="SimpleCipherPassPhrase" value="[environment]{passphrase}" />
+  </section>
+
+  <section name="com.thruzero.auth.utils.AuthenticationUtils">
+    <entry key="lockoutTimeThresholdInMinutes" value="5" />
+    <entry key="invalidLoginCountThreshold" value="10" />
+  </section>
+
+  <!-- *************************************************************
+       Common services (data-store agnostic services)
+       ************************************************************* -->
+
+  <!-- Service Registry -->
+
+  <section name="com.thruzero.common.core.service.Service">
+    <entry key="com.thruzero.domain.service.InfoNodeService" value="com.thruzero.domain.service.impl.GenericInfoNodeService" />
+    <entry key="com.thruzero.domain.service.PreferenceService" value="com.thruzero.domain.service.impl.GenericPreferenceService" />
+    <entry key="com.thruzero.domain.service.SettingService" value="com.thruzero.domain.service.impl.GenericSettingService" />
+    <entry key="com.thruzero.domain.service.MailService" value="com.thruzero.domain.service.impl.SimpleMailService" />
+
+    <entry key="com.thruzero.auth.service.UserService" value="com.thruzero.auth.service.impl.GenericUserService" />
+  </section>
+
+  <!-- SimpleMailService configuration -->
+
+  <section name="com.thruzero.domain.service.impl.SimpleMailService">
+    <entry key="emailEnabled" value="[environment]{emailEnabled}" />
+    <entry key="emailLoggingEnabled" value="[environment]{emailLoggingEnabled}" />
+  </section>
+
+  <!-- *************************************************************
+       JSF JQuery mobile "pass-thru" attributes
+       ************************************************************* -->
+
+  <section name="com.thruzero.common.jsf.renderer.html5.helper.TzResponseWriter">
+    <entry key="com.thruzero.common.jsf.renderer.html5.TzCheckboxRenderer" value="data-mini, data-role, data-theme" />
+    <entry key="com.thruzero.common.jsf.renderer.html5.TzCommandButtonRenderer" value="data-mini, data-role, data-theme, data-corners, data-icon, data-iconpos, data-iconshadow, data-inline, data-shadow, data-transition, data-direction" />
+    <entry key="com.thruzero.common.jsf.renderer.html5.TzCommandLinkRenderer" value="data-mini, data-role, data-theme, data-corners, data-icon, data-iconpos, data-iconshadow, data-inline, data-shadow, data-transition, data-direction" />
+    <entry key="com.thruzero.common.jsf.renderer.html5.TzFormRenderer" value="data-ajax" />
+    <entry key="com.thruzero.common.jsf.renderer.html5.TzOutputLinkRenderer" value="data-mini, data-role, data-theme, data-corners, data-icon, data-iconpos, data-iconshadow, data-inline, data-shadow, data-transition, data-direction" />
+    <entry key="com.thruzero.common.jsf.renderer.html5.TzSecretRenderer" value="data-mini, data-role, data-theme, data-highlight, data-track-theme, placeholder, pattern" />
+    <entry key="com.thruzero.common.jsf.renderer.html5.TzSelectOneMenuRenderer" value="data-mini, data-role, data-theme" />
+    <entry key="com.thruzero.common.jsf.renderer.html5.TzTextareaRenderer" value="data-mini, data-role, data-theme, maxlength, data-highlight, data-track-theme, placeholder, pattern" />
+    <entry key="com.thruzero.common.jsf.renderer.html5.TzTextRenderer" value="data-mini, data-role, data-theme, data-highlight, data-track-theme, placeholder, pattern" />
+  </section>
+
+  <!-- *************************************************************
+       resource providers (bundle)
+       ************************************************************* -->
+
+  <section name="com.thruzero.common.core.provider.Provider">
+    <entry key="com.thruzero.common.core.provider.ResourceProvider" value="com.thruzero.applications.faces.demo.provider.DemoStateBeanResourceProvider" />
+  </section>
+
+  <section name="com.thruzero.common.core.provider.ResourceProvider">
+    <entry key="resourceBaseName" value="resources.bundle.resources" /> <!-- value must match <resource-bundle><base-name> in faces-config.xml -->
+  </section>
+
+  <!-- *************************************************************
+       themes
+       ************************************************************* -->
+
+  <section name="com.thruzero.applications.faces.demo.beans.support.ThemeStateBean">
+    <entry key="theme1" value="themeTitle=Classic|menuListViewDataTheme=c|menuListViewDividerTheme=b|dataListViewDataTheme=d|dataListViewDividerTheme=d|textFieldHilightDataTheme=e|dialogHeaderDataTheme=d|dialogContentDataTheme=c|dialogFooterDataTheme=d|pageHeaderDataTheme=a|pageContentDataTheme=a|pageFooterDataTheme=a|okButtonDataTheme=b|cancelButtonDataTheme=c|defaultButtonDataTheme=c|deleteButtonDataTheme=f" />
+    <entry key="theme2" value="themeTitle=Midnight|menuListViewDataTheme=a|menuListViewDividerTheme=d|dataListViewDataTheme=d|dataListViewDividerTheme=d|textFieldHilightDataTheme=e|dialogHeaderDataTheme=d|dialogContentDataTheme=c|dialogFooterDataTheme=d|pageHeaderDataTheme=a|pageContentDataTheme=a|pageFooterDataTheme=a|okButtonDataTheme=b|cancelButtonDataTheme=c|defaultButtonDataTheme=c|deleteButtonDataTheme=f" />
+  </section>
+
+  <!-- *************************************************************
+       locales
+       ************************************************************* -->
+
+  <section name="com.thruzero.applications.faces.demo.beans.support.DemoLocaleSwitcherBean">
+    <entry key="en" value="us" />
+    <entry key="es" value="" />
+  </section>
+
+  <!-- *************************************************************
+       about box
+       ************************************************************* -->
+
+  <section name="com.thruzero.common.jsf.support.beans.dialog.AbstractAboutApplicationBean">
+    <entry key="jquery" value="http://jquery.com/" />
+    <entry key="jsf-api" value="http://en.wikipedia.org/wiki/JavaServer_Faces" />
+    <entry key="servlet-api" value="http://en.wikipedia.org/wiki/Java_Servlet" />
+    <entry key="hibernate-core" value="http://www.hibernate.org/" />
+    <entry key="jstl-api" value="http://en.wikipedia.org/wiki/JavaServer_Pages_Standard_Tag_Library" />
+    <entry key="mail" value="http://en.wikipedia.org/wiki/JavaMail" />
+    <entry key="rome" value="http://java.net/projects/rome/" />
+    <entry key="shiro-core" value="http://shiro.apache.org/" />
+    <entry key="xstream" value="http://xstream.codehaus.org/" />
+    <entry key="commons-collections" value="http://commons.apache.org/collections/" />
+    <entry key="commons-lang3" value="http://commons.apache.org/lang/" />
+    <entry key="jfig" value="http://jfig.sourceforge.net/" />
+    <entry key="tz-commons-core" value="http://www.thruzero.com/projects/tz-commons/index.html" />
+  </section>
+
+</configuration>

@@ -1,0 +1,89 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ Display multiple panel sets with different display options.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+<ui:composition template="/common/templates/simplePageTemplate.xhtml">
+  <ui:param name="title" value="#{resources['multiple-panels.header.text']}" />
+  <ui:param name="contentFormId" value="multiplePanelsForm" />
+
+  <!-- HEADER -->
+  <ui:define name="header">
+    <ui:include src="/common/compositions/standardHeader.xhtml">
+      <ui:param name="backLink" value="/apps/demo/dashboard.jsf" />
+      <ui:param name="headerText" value="#{resources['multiple-panels.header.text']}" />
+    </ui:include>
+  </ui:define>
+  <ui:define name="header-toolbar-right">
+    <ui:include src="/common/compositions/infoDialogButton.xhtml"/>
+  </ui:define>
+
+  <!-- CONTENT -->
+  <ui:define name="content">
+
+    <!-- Panel Set -->
+    <jqmb:simpleDivider headerText="Independent Collapsible Panels" />
+    <ui:repeat value="#{multiplePanelsBean.movies.children}" var="movie" varStatus="status">
+      <jqmb:basicPanel headerText="#{movie.find('@title').value}" dataCollapsed="false" dataMini="true">
+        <ui:define name="panelBody">
+          <h:graphicImage value="#{movie.find('@image').value}" style="float:left; height:100px; margin-right:12px;" />
+          <h:outputText value="#{movie.valueTransformer.asRichText}" escape="false" />
+        </ui:define>
+      </jqmb:basicPanel>
+    </ui:repeat>
+
+    <!-- Panel Set -->
+    <jqmb:simpleDivider headerText="Accordion Panels" style="margin-bottom:9px; padding-top:16px;" />
+    <div data-role="collapsible-set">
+      <!-- Group the basic collapsible panels into an accordion panel -->
+      <jqmb:basicPanel headerText="Test Panel One" dataCollapsed="false" dataMini="true">
+        <ui:define name="panelBody">
+          Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+          Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+        </ui:define>
+      </jqmb:basicPanel>
+      <jqmb:basicPanel headerText="Test Panel Two" dataCollapsed="true" dataMini="true">
+        <ui:define name="panelBody">
+          A small river named Duden flows by their place and supplies it with the necessary regelialia.
+          It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
+        </ui:define>
+      </jqmb:basicPanel>
+      <jqmb:basicPanel headerText="Test Panel Three" dataCollapsed="true" dataMini="true">
+        <ui:define name="panelBody">
+          Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life.
+          One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+        </ui:define>
+      </jqmb:basicPanel>
+    </div>
+
+  </ui:define>
+
+</ui:composition>
+
+</html>

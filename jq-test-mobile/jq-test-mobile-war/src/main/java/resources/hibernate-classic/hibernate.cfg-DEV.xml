@@ -1,0 +1,109 @@
+<!DOCTYPE hibernate-configuration SYSTEM "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!--
+
+  http://docs.jboss.org/hibernate/core/3.3/reference/en/html/session-configuration.html
+
+  Transitive persistence: For each basic operation of the Hibernate session -
+  including persist(), merge(), saveOrUpdate(), delete(), lock(), refresh(), evict(),
+  replicate() - there is a corresponding cascade style. Respectively, the
+  cascade styles are named create, merge, save-update, delete, lock,
+  refresh, evict, replicate. If you want an operation to be cascaded
+  along an association, you must indicate that in the mapping document.
+
+  The default, cascade="none", specifies that no operations are to be cascaded.
+
+  A special cascade style, delete-orphan, applies only to one-to-many
+  associations, and indicates that the delete() operation should be applied to
+  any child object that is removed from the association.
+
+  Recommendations:
+    • It doesn't usually make sense to enable cascade on a <many-to-one> or
+      <many-to-many> association. Cascade is often useful for <one-to-one> and
+      <one-to-many> associations.
+
+    • If the child object's lifespan is bounded by the lifespan of the parent object,
+      make it a life cycle object by specifying cascade="all,delete-orphan".
+
+    You might not need cascade at all. But if you think that you
+    will often be working with the parent and children together in the same
+    transaction, and you want to save yourself some typing, consider using
+    cascade="persist,merge,save-update".
+
+    Mapping an association (either a single valued association, or a collection)
+    with cascade="all" marks the association as a parent/child style relationship
+    where save/update/delete of the parent results in save/update/delete of the
+    child or children.
+
+ -->
+<hibernate-configuration>
+    <session-factory>
+        <!-- Settings for DEV MySQL database. -->
+        <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/testy_schema</property>
+        <property name="connection.username">testy</property>
+        <property name="connection.password">GsXez0K6dd8</property>
+
+        <property name="hibernate.generate_statistics">false</property>
+
+        <!-- Specifies when Hibernate should release JDBC connections. By default, a JDBC connection is held until
+             the session is explicitly closed or disconnected. For an application server JTA datasource, use after_statement
+             to aggressively release connections after every JDBC call. For a non-JTA connection, it often makes sense to
+             release the connection at the end of each transaction, by using after_transaction. auto will choose after_statement
+             for the JTA and CMT transaction strategies and after_transaction for the JDBC transaction strategy.
+             **** This setting only affects Sessions returned from SessionFactory.openSession. ******
+             For Sessions obtained through SessionFactory.getCurrentSession, the CurrentSessionContext implementation configured
+             for use controls the connection release mode for those Sessions. See Section 2.5, “Contextual sessions�? -->
+        <!-- property name="hibernate.connection.release_mode">after_transaction</property-->
+
+        <!-- see http://docs.jboss.org/hibernate/core/3.3/reference/en/html/architecture.html#architecture-current-session -->
+        <property name="hibernate.transaction.auto_close_session">true</property>
+        <property name="hibernate.current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>
+        <!-- property name="hibernate.current_session_context_class">org.hibernate.context.ManagedSessionContext</property-->
+
+        <!-- configuration pool via c3p0 : see http://www.mchange.com/projects/c3p0/index.html#idleConnectionTestPeriod -->
+        <!-- see also https://forum.hibernate.org/viewtopic.php?p=2393185 -->
+        <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+        <property name="hibernate.c3p0.min_size">1</property>
+        <property name="hibernate.c3p0.max_size">25</property>
+        <property name="hibernate.c3p0.acquire_increment">1</property>
+        <property name="hibernate.c3p0.idle_test_period">10</property>
+        <property name="hibernate.c3p0.max_statements">0</property>
+        <property name="hibernate.c3p0.timeout">60</property>
+        <property name="hibernate.c3p0.preferredTestQuery">SELECT 1</property>
+        <property name="hibernate.c3p0.testConnectionOnCheckout">true</property>
+        <property name="hibernate.c3p0.maxConnectionAge">120</property>
+
+        <!-- Use the Hibernate built-in pool for tests. -->
+        <!-- property name="connection.pool_size">3</property-->
+
+        <!-- Enable auto-commit mode for special cases (integration testing) -->
+        <property name="connection.autocommit">false</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        <property name="cache.use_query_cache">false</property>
+        <property name="cache.use_minimal_puts">false</property>
+
+        <!-- In eager fetching, only join three tables deep if joins are used -->
+        <property name="max_fetch_depth">3</property>
+
+        <!-- Print SQL to stdout, format it nicely  -->
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+        <property name="use_sql_comments">false</property>
+
+        <!-- Common mapping files -->
+        <mapping resource="resources/hibernate-classic/TextEnvelope.hbm.xml"/>
+
+        <mapping resource="resources/hibernate-classic/Preference.hbm.xml"/>
+        <mapping resource="resources/hibernate-classic/Setting.hbm.xml"/>
+
+        <mapping resource="resources/hibernate-classic/BasicUser.hbm.xml"/>
+        <mapping resource="resources/hibernate-classic/BasicUserDetails.hbm.xml"/>
+        <mapping resource="resources/hibernate-classic/BasicUserPermission.hbm.xml"/>
+
+    </session-factory>
+
+</hibernate-configuration>

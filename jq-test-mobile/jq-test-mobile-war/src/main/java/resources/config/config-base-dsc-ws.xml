@@ -1,0 +1,106 @@
+<!--
+  - SAMPLE CONFIGURATION FEATURING DSC-WEB-SERVICE DATA STORE
+  -
+  - See "initFilter" in web.xml:
+  -    <init-param>
+  -      <param-name>config-file-path</param-name>
+  -      <param-value>${pftest18_config_dir_path_env}/config-base-dsc-fs.xml</param-value>
+  -    </init-param>
+  -
+  - This is the base config file for a DSC configuration using a simple web service (as a data store).
+  - It can be located anywhere on the file system (so the same WAR can be used for DEV, PRE and PRD).
+  - It can be selected in web.xml; the "${pftest18_config_dir_path_env}" environment var (optional).
+  -->
+<configuration>
+  <include name="config-common.xml" />
+
+  <!-- =========================================================================== -->
+  <!-- Services                                                                    -->
+  <!-- =========================================================================== -->
+
+  <!-- Service Registry - Services can be registered here (and will be combined with any other "com.thruzero.common.core.service.Service" sections included -->
+  <section name="com.thruzero.common.core.service.Service">
+    <!-- - DSC-specific domain services (explicit DSC) -->
+    <entry key="com.thruzero.domain.dsc.service.DscInfoNodeService" value="com.thruzero.domain.dsc.service.DscInfoNodeService" />
+
+    <!-- - Demo application services -->
+    <entry key="com.thruzero.domain.demo.service.GuestBookService" value="com.thruzero.domain.demo.service.GuestBookService" />
+  </section>
+
+  <!-- ===============================================================================
+        DAO Registry (Combination of DSC and HTTP Data-Stores)
+          - If the Locator component was replaced by CID, then these config entries would be replaced by
+            similar entries in the beans.xml file, since these services are equivalent to @Alternative.
+       =============================================================================== -->
+
+  <!-- DAO Registry - DAOs can be registered here (and will be combined with any other "com.thruzero.domain.dao.DAO" sections included -->
+  <section name="com.thruzero.domain.dao.DAO">
+    <!-- DSC -->
+    <entry key="com.thruzero.domain.dao.TextEnvelopeDAO" value="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" />
+    <entry key="com.thruzero.domain.dao.SettingDAO" value="com.thruzero.domain.dsc.dao.DscSettingDAO" />
+    <entry key="com.thruzero.domain.dao.PreferenceDAO" value="com.thruzero.domain.dsc.dao.DscPreferenceDAO" />
+
+    <!-- JPA for users -->
+    <entry key="com.thruzero.auth.dao.UserDAO" value="com.thruzero.auth.jpa.dao.JpaUserDAO" />
+
+    <!-- Dashboard (configured to use DscTextEnvelopeDAO) -->
+    <entry key="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" value="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" />
+
+    <!-- GuestBookService (using HttpSession) -->
+    <entry key="com.thruzero.domain.demo.dao.GuestBookMessageDAO" value="com.thruzero.applications.faces.demo.dao.jsf.HttpSessionGuestBookMessageDAO" />
+  </section>
+
+  <!-- DscTextEnvelopeDAO initialization (configured to use web service store) -->
+  <section name="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO">
+    <entry key="com.thruzero.domain.dsc.store.DataStoreContainerFactory" value="com.thruzero.domain.dsc.ws.WsDataStoreContainerFactory" />
+    <entry key="base" value="DscTextEnvelopeDAO" />
+  </section>
+
+  <!-- DscPreferenceDAO initialization (configured to use web service store) -->
+  <section name="com.thruzero.domain.dsc.dao.DscPreferenceDAO">
+    <entry key="com.thruzero.domain.dsc.store.DataStoreContainerFactory" value="com.thruzero.domain.dsc.ws.WsDataStoreContainerFactory" />
+    <entry key="base" value="DscPreferenceDAO" />
+  </section>
+
+  <!-- DscSettingDAO initialization (configured to use web service store) -->
+  <section name="com.thruzero.domain.dsc.dao.DscSettingDAO">
+    <entry key="com.thruzero.domain.dsc.store.DataStoreContainerFactory" value="com.thruzero.domain.dsc.ws.WsDataStoreContainerFactory" />
+    <entry key="base" value="DscSettingDAO" />
+  </section>
+
+  <!-- Base UserDAO initialization -->
+  <section name="com.thruzero.auth.dao.UserDAO">
+    <entry key="userClass" value="com.thruzero.auth.model.impl.BasicUser" />
+  </section>
+
+  <!-- =========================================================================== -->
+  <!-- Web Service Data-Store                                                      -->
+  <!-- =========================================================================== -->
+
+  <!-- Define application-specific web-service DataStoreContainer settings -->
+  <section name="com.thruzero.domain.dsc.ws.WsDataStoreContainerFactory">
+    <entry key="rootServiceUri" value="[environment]{rootServiceUri}" />
+  </section>
+
+  <!-- =========  TODO-p1(george) JPA for users (dsc-ws, users is broken) ======== -->
+
+  <!-- JPA transaction -->
+  <section name="com.thruzero.common.core.transaction.TransactionMgr">
+    <entry key="com.thruzero.common.core.transaction.TransactionMgr" value="com.thruzero.domain.jpa.transaction.JpaDatabaseTransactionMgr" />
+  </section>
+
+  <!-- Application-specific JPA settings -->
+  <section name="com.thruzero.domain.jpa.transaction.JpaDatabaseTransactionMgr">
+    <entry key="persistence-unit.name" value="jq-test-mobile-domain-manager" />
+
+    <entry key="javax.persistence.jdbc.user" value="[environment]{jdbcUser}" />
+    <entry key="javax.persistence.jdbc.password" value="[environment]{jdbcPassword}" />
+    <entry key="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+    <entry key="javax.persistence.jdbc.url" value="[environment]{jdbcUrl}" />
+    <entry key="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />
+    <entry key="hibernate.max_fetch_depth" value="3" />
+    <entry key="hibernate.show_sql" value="false" />
+    <entry key="hibernate.format_sql" value="false" />
+  </section>
+
+</configuration>

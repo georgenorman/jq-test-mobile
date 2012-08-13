@@ -1,0 +1,100 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ Display persisted messages from users plus allow new messages to be added.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+<ui:composition template="/common/templates/simplePageTemplate.xhtml">
+  <ui:param name="title" value="#{resources['guest-book.header.text']}" />
+  <ui:param name="contentFormId" value="guestBookForm" />
+
+  <!-- HEADER -->
+  <ui:define name="header">
+    <ui:include src="/common/compositions/standardHeader.xhtml">
+      <ui:param name="backLink" value="/apps/demo/dashboard.jsf" />
+      <ui:param name="headerText" value="#{resources['guest-book.header.text']}" />
+    </ui:include>
+  </ui:define>
+
+  <!-- CONTENT -->
+  <ui:define name="content">
+
+    <jqmb:basicPanel headerText="#{resources['guest-book.header.text']}" dataCollapsed="false" dataMini="true">
+      <ui:define name="panelBody">
+        <jqmb:basicListView dataFilter="true">
+          <ui:define name="listBody">
+            <ui:repeat value="#{guestBookBean.messages}" var="row">
+              <li>
+                <h3 style="white-space:normal">#{row.title}</h3>
+                <p style="white-space:pre-wrap">#{row.message}</p>
+                <p style="margin-top:6px;"><strong>#{row.guestName}</strong> - #{row.location}</p>
+              </li>
+            </ui:repeat>
+          </ui:define>
+        </jqmb:basicListView>
+      </ui:define>
+    </jqmb:basicPanel>
+
+    <!-- /////////////////////////////////// GUESTBOOK MESSAGE FORM /////////////////////////////////// -->
+
+    <jqmb:basicPanel headerText="Please Sign Our Guestbook" dataCollapsed="false" dataMini="true" dataIconpos="right">
+      <ui:define name="panelBody">
+        <div>
+          <h:outputLabel for="title" value="* Title:" />
+          <tzh:inputText required="true" name="title" id="title" maxlength="50" size="50" requiredMessage="Title is required." value="#{guestBookBean.newMessage.title}"
+            data-theme="#{themeStateBean.model.textFieldHilightDataTheme}" />
+        </div>
+
+        <div>
+          <h:outputLabel for="location" value="* Location:" />
+          <tzh:inputText required="true" name="location" id="location" maxlength="50" size="50" requiredMessage="Location is required." value="#{guestBookBean.newMessage.location}"
+            data-theme="#{themeStateBean.model.textFieldHilightDataTheme}" />
+        </div>
+
+        <div>
+          <h:outputLabel for="message" value="* Message:" />
+          <tzh:inputTextarea required="true" name="message" id="message" cols="80" rows="5" maxlength="512" requiredMessage="Message is required." value="#{guestBookBean.newMessage.message}"
+            data-theme="#{themeStateBean.model.textFieldHilightDataTheme}" />
+        </div>
+
+        <div>
+          <h:outputLabel for="name" value="* Name:" />
+          <tzh:inputText required="true" name="name" id="name" maxlength="50" size="50" requiredMessage="Name is required." value="#{guestBookBean.newMessage.guestName}"
+            data-theme="#{themeStateBean.model.textFieldHilightDataTheme}" />
+        </div>
+
+        <tzh:commandButton value="Post Message" data-icon="check" data-theme="#{themeStateBean.model.okButtonDataTheme}"
+          data-transition="#{demoStateBean.flipDataTransition}" data-direction="forward" action="#{guestBookBean.postNewMessage}" id="post2" onclick="showPageLoadingIndicator();" data-mini="true" data-inline="true" />
+      </ui:define>
+    </jqmb:basicPanel>
+
+  </ui:define>
+
+</ui:composition>
+
+</html>

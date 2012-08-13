@@ -1,0 +1,73 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ Settings dialog - manages theme and locale settings for a particular user session.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+<ui:composition template="/common/templates/simplePageTemplate.xhtml">
+  <ui:param name="title" value="#{resources['settings.header.text']}" />
+  <ui:param name="contentFormId" value="settingsForm" />
+
+  <ui:define name="header">
+    <ui:include src="/common/compositions/standardHeader.xhtml">
+      <ui:param name="backLink" value="/apps/demo/dashboard.jsf" />
+      <ui:param name="backTransition" value="#{demoStateBean.flipDataTransition}" />
+      <ui:param name="headerText" value="#{resources['settings.header.text']}" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="content">
+
+    <div data-role="collapsible-set">
+      <div data-role="collapsible" data-collapsed="false" data-mini="true">
+        <h3>#{resources['settings.common.header.text']}</h3>
+          <div data-role="fieldcontain">
+            <h:outputLabel for="theme" value="#{resources['settings.theme.label']}: "/>
+            <tzh:selectOneMenu name="theme" id="theme" value="#{settingsBean.themeName}" data-mini="true">
+              <f:selectItems value="#{settingsBean.themeSelectItems}" itemLabel="Escape Type:" />
+            </tzh:selectOneMenu>
+          </div>
+
+          <div data-role="fieldcontain">
+            <h:outputLabel for="locale" value="#{resources['settings.locale.label']}: "/>
+            <tzh:selectOneMenu id="locale" value="#{demoLocaleSwitcherBean.localeLanguage}" data-mini="true">
+              <f:selectItems value="#{demoLocaleSwitcherBean.localeSelectItems}" />
+            </tzh:selectOneMenu>
+          </div>
+      </div>
+    </div>
+
+    <tzh:commandButton value="Save" data-theme="#{themeStateBean.model.okButtonDataTheme}" style="width:100px;" data-icon="check"
+        action="#{settingsBean.saveAction}" onclick="showPageLoadingIndicator();" data-mini="true" data-inline="true"/>
+
+  </ui:define>
+
+</ui:composition>
+
+</html>
+

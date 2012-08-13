@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author>George Norman</author>
+    <title>jq-test-mobile-war</title>
+  </properties>
+  <body>
+    <section name="Overview">
+      <p>
+        The <b>jq-test-mobile-war</b> module is a sample web application, for a mobile browser, used to test tz-commons.
+      </p>
+    </section>
+
+    <section name="Eclipse Setup">
+        Here are some things that are not automatically configured for jq-test-mobile-war, when importing the poms into Eclipse
+        [TODO-p1(george) - this may be an issue with my version of Eclipse and default settings]:
+        <ol>
+          <li><b>Eclipse Project Facets</b>: Check 'Dynamic Web Module' (and choose version 2.5, for Tomcat v6).<br/>
+              <img src="images/eclipse/web-module.project-settings.png" />
+              <p>For further configuration of the Web Module, I unchecked this, since I already have a web.xml file. Also, for maven, set "Content Directory" to "src/main/webapp".</p>
+              <img src="images/eclipse/web-module.further-settings.png" />
+          </li>
+          <li><b>Eclipse Deployment Assembly</b>: Add the Maven Dependencies (also needed anytime 'Maven :: Update Project Configuration' is used).<br/>
+              <img src="images/eclipse/deployment-assembly.png" />
+          </li>
+          <li><b>Maven Workspace Project dependencies</b>: Uncheck this to avoid build and runtime issues.<br/>
+              <img src="images/eclipse/maven.png" />
+          </li>
+          <li><b>Eclipse Web Modules</b>: Eclipse will add '-war' back to the path, if you attempt to remove it, when the module is first added to the server (as well as other times).
+              If upon startup, you receive a 404 error, return to this step and ensure '-war' is still missing (it can reappear).
+              [TODO-p1(george) - this is likely a pom mis-configuration].<br/>
+              <img src="images/eclipse/tomcat-modules.png" />
+          </li>
+        </ol>
+    </section>
+
+  </body>
+</document>

@@ -1,0 +1,12 @@
+<configuration>
+
+  <!-- ===============================================================================
+        DAO Registry - For REFERENCE only. The contents of this file have been copied to "config-base-jpa.xml".
+       =============================================================================== -->
+
+  <section name="com.thruzero.domain.dao.DAO">
+    <entry key="com.thruzero.domain.demo.dao.GuestBookMessageDAO" value="com.thruzero.domain.demo.dao.jpa.JpaGuestBookMessageDAO" />
+    <entry key="com.thruzero.domain.demo.dao.InputsDAO" value="com.thruzero.domain.demo.dao.jpa.JpaInputsDAO" />
+   </section>
+
+</configuration>

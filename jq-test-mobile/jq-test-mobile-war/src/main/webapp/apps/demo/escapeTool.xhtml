@@ -1,0 +1,76 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ A simple test to take input from the user, then process it and display the results.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+<ui:composition template="/common/templates/simplePageTemplate.xhtml">
+  <ui:param name="title" value="#{resources['escape-tool.header.text']}" />
+  <ui:param name="contentFormId" value="escapeToolForm" />
+
+  <!-- HEADER -->
+  <ui:define name="header">
+    <ui:include src="/common/compositions/standardHeader.xhtml">
+      <ui:param name="backLink" value="/apps/demo/dashboard.jsf" />
+      <ui:param name="headerText" value="#{resources['escape-tool.header.text']}" />
+    </ui:include>
+  </ui:define>
+
+  <!-- CONTENT -->
+  <ui:define name="content">
+
+    <jqmb:basicPanel headerText="#{resources['escape-tool.header.text']}" dataCollapsed="false" dataMini="true">
+      <ui:define name="panelBody">
+        <div data-role="fieldcontain">
+          <tzh:selectOneMenu name="escapeType" id="escapeType" value="#{escapeToolBean.escapeType}" data-mini="true">
+            <f:selectItems value="#{escapeToolBean.escapeTypeSelectItems}" itemLabel="Escape Type:" />
+          </tzh:selectOneMenu>
+        </div>
+
+        <div>
+          <h:outputLabel for="inputText" value="* Input Text:" />
+          <tzh:inputTextarea required="true" name="inputText" id="inputText" cols="80" rows="5" maxlength="512" requiredMessage="Input Text is required." value="#{escapeToolBean.inputText}"
+            data-theme="#{themeStateBean.model.textFieldHilightDataTheme}" />
+        </div>
+
+        <div>
+          <h:outputLabel for="escapedText" value="Escaped Text:" />
+          <tzh:inputTextarea name="escapedText" id="escapedText" cols="80" rows="6" maxlength="2048" requiredMessage="Input Text is required." value="#{escapeToolBean.escapedText}"
+            readonly="true" autoResize="false" style="background-color:#eeeeee;" />
+        </div>
+
+        <tzh:commandButton value="Submit" data-icon="check" data-theme="#{themeStateBean.model.okButtonDataTheme}"
+          action="#{escapeToolBean.escapeTextAction}" id="post2" onclick="showPageLoadingIndicator();" data-mini="true" data-inline="true" />
+      </ui:define>
+    </jqmb:basicPanel>
+
+  </ui:define>
+
+</ui:composition>
+
+</html>

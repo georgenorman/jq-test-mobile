@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>jq-test-mobile</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <context-param>
+    <param-name>javax.faces.CONFIG_FILES</param-name>
+    <param-value>/WEB-INF/config/faces-config.xml</param-value>
+  </context-param>
+  <context-param>
+    <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>server</param-value>
+  </context-param>
+  <context-param>
+    <param-name>com.sun.faces.expressionFactory</param-name>
+    <param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+  </context-param>
+
+  <!-- http://stackoverflow.com/questions/3388109/how-can-i-remove-html-comments-in-my-facelets -->
+  <context-param>
+    <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
+  <!-- ThruZero custom tag library -->
+  <context-param>
+    <param-name>javax.faces.FACELETS_LIBRARIES</param-name>
+    <param-value>/WEB-INF/facelets/tags/tz-core.taglib.xml;/WEB-INF/facelets/tags/tz-html5.taglib.xml;/WEB-INF/facelets/tags/jq-mobile-basic.taglib.xml</param-value>
+  </context-param>
+
+  <!-- ThruZero transaction filter -->
+  <filter>
+    <filter-name>transactionFilter</filter-name>
+    <filter-class>com.thruzero.common.web.filter.TransactionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>transactionFilter</filter-name>
+    <url-pattern>/apps/*</url-pattern>
+  </filter-mapping>
+
+  <!-- ThruZero initialization filter -->
+  <filter>
+    <filter-name>initFilter</filter-name>
+    <filter-class>com.thruzero.common.web.filter.InitFilter</filter-class>
+    <init-param>
+      <param-name>config-file-path-env-var</param-name>
+      <param-value>jqtestmobile_config_dir_path_env</param-value>
+    </init-param>
+    <init-param>
+      <param-name>config-file-path</param-name>
+      <!-- param-value>${jqtestmobile_config_dir_path_env}/config-base-dsc-fs.xml</param-value -->
+      <!-- param-value>${jqtestmobile_config_dir_path_env}/config-base-dsc-ws.xml</param-value -->
+      <!-- param-value>${jqtestmobile_config_dir_path_env}/config-base-hibernate.xml</param-value -->
+      <param-value>${jqtestmobile_config_dir_path_env}/config-base-jpa.xml</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>initFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- Shiro filter -->
+  <!-- SEE: http://shiro.apache.org/web.html -->
+  <filter>
+    <filter-name>ShiroFilter</filter-name>
+    <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ShiroFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+
+  <!-- Faces servlet -->
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+
+  <listener>
+    <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+  </listener>
+
+  <!-- Shiro listener -->
+  <listener>
+    <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+  </listener>
+
+  <error-page>
+    <error-code>401</error-code>
+    <location>/error/401.jsf</location>
+  </error-page>
+</web-app>

@@ -1,0 +1,75 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ Display some RSS feeds.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+<ui:composition template="/common/templates/simplePageTemplate.xhtml">
+  <ui:param name="title" value="#{resources['rss-feeds.header.text']}" />
+  <ui:param name="contentFormId" value="feedsForm" />
+
+  <ui:define name="headExt">
+    <style>
+      p {font-size: 12px;}
+      img {margin-right: 6px;}
+    </style>
+  </ui:define>
+
+  <!-- HEADER -->
+  <ui:define name="header">
+    <ui:include src="/common/compositions/standardHeader.xhtml">
+      <ui:param name="backLink" value="/apps/demo/dashboard.jsf" />
+      <ui:param name="headerText" value="#{resources['rss-feeds.header.text']}" />
+    </ui:include>
+  </ui:define>
+  <ui:define name="header-toolbar-right">
+    <ui:include src="/common/compositions/infoDialogButton.xhtml"/>
+  </ui:define>
+
+  <!-- CONTENT -->
+  <ui:define name="content">
+    <div data-role="collapsible-set">
+      <ui:repeat value="#{feedsBean.feeds}" var="feed">
+        <jqmb:basicPanel headerText="#{feed.title} [#{feed.publishedDate}]" dataCollapsed="false" dataMini="true">
+          <ui:define name="panelBody">
+            <ui:repeat value="#{feed.entries}" var="entry">
+              <a href="#{entry.link}" data-transition="slidefade"><h:outputText value="#{entry.title}" escape="false" style="font-size:smaller;" /></a>
+              <p>
+                <h:outputText value="#{entry.description}" escape="false" styleClass="rss-content" />
+              </p>
+            </ui:repeat>
+          </ui:define>
+        </jqmb:basicPanel>
+      </ui:repeat>
+    </div>
+
+  </ui:define>
+
+</ui:composition>
+
+</html>

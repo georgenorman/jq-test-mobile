@@ -1,0 +1,7 @@
+<configuration>
+
+  <section name="environment">
+    <entry key="parentTestStorePath" value="C:/Users/George/Projects/_projects.jsf/jq-test-mobile/jq-test-mobile-domain/target/test-classes"/>
+  </section>
+
+</configuration>

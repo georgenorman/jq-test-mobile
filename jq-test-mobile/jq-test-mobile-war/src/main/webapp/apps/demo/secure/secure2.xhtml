@@ -1,0 +1,64 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ Page that requires login plus particular roles.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+<ui:composition template="/common/templates/simplePageTemplate.xhtml">
+  <ui:param name="title" value="#{resources['secure2.header.text']}" />
+  <ui:param name="contentFormId" value="secure2Form" />
+
+  <!-- HEADER -->
+  <ui:define name="header">
+    <ui:include src="/common/compositions/standardHeader.xhtml">
+      <ui:param name="backLink" value="/apps/demo/dashboard.jsf" />
+      <ui:param name="headerText" value="#{resources['secure2.header.text']}" />
+    </ui:include>
+  </ui:define>
+
+  <!-- CONTENT -->
+  <ui:define name="content">
+
+    <tzc:notificationPanel rendered="true"
+      message="If you see this page, you should be logged in as 'dogbert', 'wally' or 'sally'. If not logged in, you will be redirected to the login page."/>
+
+      <div style="margin-left:12px; margin-top:24px;">
+      <tzc:notificationPanel message="#{resources['secure2.notification.bar.message']} #{secureBean.securityActions}." styleClass="panel-content-text" rendered="true"/>
+
+        <div>
+          <h:outputLabel for="message" value="* Message:" />
+          <tzh:inputTextarea name="message" id="message" cols="80" rows="5" maxlength="512" value="#{secureBean.editorHelper.text1}" disabled="#{!secureBean.editorHelper.editable}"
+            data-theme="#{themeStateBean.model.textFieldHilightDataTheme}" />
+        </div>
+    </div>
+
+  </ui:define>
+
+</ui:composition>
+
+</html>

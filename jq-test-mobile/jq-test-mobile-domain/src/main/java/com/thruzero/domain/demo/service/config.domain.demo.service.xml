@@ -1,0 +1,12 @@
+<configuration>
+
+  <!-- ===============================================================================
+        Service Registry - For REFERENCE only. The contents of this file have been copied to "config-base-jpa.xml".
+       =============================================================================== -->
+
+  <section name="com.thruzero.common.core.service.Service">
+    <entry key="com.thruzero.domain.demo.service.GuestBookService" value="com.thruzero.domain.demo.service.GuestBookService" />
+    <entry key="com.thruzero.domain.demo.service.InputsService" value="com.thruzero.domain.demo.service.InputsService" />
+  </section>
+
+</configuration>

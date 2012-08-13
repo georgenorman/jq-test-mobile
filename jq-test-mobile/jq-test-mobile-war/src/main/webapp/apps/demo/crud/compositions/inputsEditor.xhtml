@@ -1,0 +1,116 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ A page fragment which supports create and edit of a given InputsModel using a variety of input
+  ~ components (e.g., textArea, date, telephone, etc).
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+  <ui:composition>
+  <h:inputHidden id="id" value="#{inputsViewerBean.index}" />
+
+  <div class="content-primary">
+    <div data-role="fieldcontain">
+      <h:outputLabel for="title" value="* Title:" />
+      <tzh:inputText required="true" name="title" id="title" maxlength="40"  requiredMessage="The 'Title' field is required." value="#{inputsViewerBean.inputsModel.title}"
+        placeholder="Type whatever" data-mini="true" data-theme="#{themeStateBean.model.textFieldHilightDataTheme}" disabled="#{readOnly}" />
+    </div>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="slider1" value="Yes/No Slider:" />
+      <tzh:selectOneMenu name="slider1" id="slider1" value="#{inputsViewerBean.inputsModel.slider1}" data-role="slider" data-mini="true" disabled="#{readOnly}">
+        <f:selectItem id="off" itemLabel="Off" itemValue="off" />
+        <f:selectItem id="on" itemLabel="On" itemValue="on" />
+      </tzh:selectOneMenu>
+    </div>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="choice1" value="Shipping method:" styleClass="select" />
+      <tzh:selectOneMenu name="choice1" id="choice1" value="#{inputsViewerBean.inputsModel.choice1}" data-mini="true" disabled="#{readOnly}">
+        <f:selectItem id="standard" itemLabel="Standard: 7 day" itemValue="standard" />
+        <f:selectItem id="rush" itemLabel="Rush: 3 days" itemValue="rush" />
+        <f:selectItem id="express" itemLabel="Express: next day" itemValue="express" />
+        <f:selectItem id="overnight" itemLabel="Overnight" itemValue="overnight" />
+      </tzh:selectOneMenu>
+    </div>
+
+    <div data-role="fieldcontain">
+      <fieldset data-role="controlgroup">
+        <legend>Snacks:</legend>
+        <tzh:checkbox name="checkbox1a" id="checkbox1a" value="#{inputsViewerBean.inputsModel.checkbox1a}" data-mini="true" styleClass="custom" disabled="#{readOnly}" />
+        <h:outputLabel for="checkbox1a" value="Cheetos"/>
+
+        <tzh:checkbox name="checkbox2a" id="checkbox2a" value="#{inputsViewerBean.inputsModel.checkbox2a}" data-mini="true" styleClass="custom" disabled="#{readOnly}" />
+        <h:outputLabel for="checkbox2a" value="Doritos"/>
+
+        <tzh:checkbox name="checkbox3a" id="checkbox3a" value="#{inputsViewerBean.inputsModel.checkbox3a}" data-mini="true" styleClass="custom" disabled="#{readOnly}" />
+        <h:outputLabel for="checkbox3a" value="Fritos"/>
+
+        <tzh:checkbox name="checkbox4a" id="checkbox4a" value="#{inputsViewerBean.inputsModel.checkbox4a}" data-mini="true" styleClass="custom" disabled="#{readOnly}" />
+        <h:outputLabel for="checkbox4a" value="Sun Chips"/>
+      </fieldset>
+    </div>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="number" value="Number:" />
+      <tzh:inputText type="number" name="number" id="number" maxlength="24" value="#{inputsViewerBean.inputsModel.number}" data-mini="true" disabled="#{readOnly}" />
+    </div>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="numberPattern" value="Number + pattern:" />
+      <tzh:inputText type="number" name="numberPattern" pattern="[0-9]*" id="numberPattern" maxlength="24" value="#{inputsViewerBean.inputsModel.numberPattern}"
+        placeholder="Pattern attribute [0-9]* for a numeric keypad" data-mini="true" disabled="#{readOnly}" />
+    </div>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="telephone" value="Telephone:" />
+      <tzh:inputText type="tel" name="telephone" id="telephone" maxlength="24" value="#{inputsViewerBean.inputsModel.telephone}" data-mini="true" disabled="#{readOnly}" />
+    </div>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="time" value="Time:" />
+      <tzh:inputText type="time" name="time" id="time" maxlength="24" value="#{inputsViewerBean.inputsModel.time}" data-mini="true" disabled="#{readOnly}" />
+    </div>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="date" value="Date:" />
+      <tzh:inputText type="date" name="date" id="date" maxlength="24" value="#{inputsViewerBean.inputsModel.date}" data-mini="true" disabled="#{readOnly}" />
+    </div>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="month" value="Month:" />
+      <tzh:inputText type="month" name="month" id="month" maxlength="24" value="#{inputsViewerBean.inputsModel.month}" data-mini="true" disabled="#{readOnly}" />
+    </div>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="datetime" value="Datetime:" />
+      <tzh:inputText type="datetime" name="datetime" id="datetime" maxlength="24" value="#{inputsViewerBean.inputsModel.datetime}" data-mini="true" disabled="#{readOnly}" />
+    </div>
+  </div>
+  </ui:composition>
+
+</html>

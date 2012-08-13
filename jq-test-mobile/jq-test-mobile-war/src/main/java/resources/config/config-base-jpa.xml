@@ -1,0 +1,108 @@
+<!--
+  - SAMPLE CONFIGURATION FEATURING JPA DATA STORE
+  -
+  - See "initFilter" in web.xml:
+  -    <init-param>
+  -      <param-name>config-file-path</param-name>
+  -      <param-value>${pftest18_config_dir_path_env}/config-base-jpa.xml</param-value>
+  -    </init-param>
+  -
+  - This is the base config file for a JPA configuration.
+  - It can be located anywhere on the file system (so the same WAR can be used for DEV, PRE and PRD).
+  - It can be selected in web.xml; the "${pftest18_config_dir_path_env}" environment var (optional).
+  -->
+<configuration>
+  <include name="config-common.xml" />
+
+  <!-- =========================================================================== -->
+  <!-- Services                                                                    -->
+  <!-- =========================================================================== -->
+
+  <!-- Service Registry - Services can be registered here (and will be combined with any other "com.thruzero.common.core.service.Service" sections included -->
+  <section name="com.thruzero.common.core.service.Service">
+    <!-- - DSC-specific domain services -->
+    <entry key="com.thruzero.domain.dsc.service.DscInfoNodeService" value="com.thruzero.domain.dsc.service.DscInfoNodeService" />
+
+    <!-- - Demo application services -->
+    <entry key="com.thruzero.domain.demo.service.GuestBookService" value="com.thruzero.domain.demo.service.GuestBookService" />
+    <entry key="com.thruzero.domain.demo.service.InputsService" value="com.thruzero.domain.demo.service.InputsService" />
+  </section>
+
+  <!-- ===============================================================================
+        DAO Registry (Combination of JPA, DSC and HTTP Data-Stores)
+          - If the Locator component was replaced by CID, then these config entries would be replaced by
+            similar entries in the beans.xml file, since these services are equivalent to @Alternative.
+       =============================================================================== -->
+
+  <!-- DAO Registry - DAOs can be registered here (and will be combined with any other "com.thruzero.domain.dao.DAO" sections included -->
+  <section name="com.thruzero.domain.dao.DAO">
+    <!-- JPA -->
+    <entry key="com.thruzero.domain.dao.TextEnvelopeDAO" value="com.thruzero.domain.jpa.dao.JpaTextEnvelopeDAO" />
+    <entry key="com.thruzero.domain.dao.PreferenceDAO" value="com.thruzero.domain.jpa.dao.JpaPreferenceDAO" />
+    <entry key="com.thruzero.domain.dao.SettingDAO" value="com.thruzero.domain.jpa.dao.JpaSettingDAO" />
+
+    <entry key="com.thruzero.auth.dao.UserDAO" value="com.thruzero.auth.jpa.dao.JpaUserDAO" />
+
+    <!-- For GuestBookService (using HttpSession) -->
+    <entry key="com.thruzero.domain.demo.dao.GuestBookMessageDAO" value="com.thruzero.applications.faces.demo.dao.jsf.HttpSessionGuestBookMessageDAO" />
+
+    <!-- For GuestBookService (using JPA) -->
+    <!-- entry key="com.thruzero.domain.demo.dao.GuestBookMessageDAO" value="com.thruzero.domain.demo.dao.jpa.JpaGuestBookMessageDAO" /-->
+
+    <!-- For InputsService (using HttpSession) -->
+    <entry key="com.thruzero.domain.demo.dao.InputsDAO" value="com.thruzero.applications.faces.demo.dao.jsf.HttpSessionInputsDAO" />
+    <!-- entry key="com.thruzero.domain.demo.dao.InputsDAO" value="com.thruzero.domain.demo.dao.jpa.JpaInputsDAO" /-->
+    <!-- entry key="com.thruzero.domain.jpa.dao.JpaTextEnvelopeDAO" value="com.thruzero.domain.jpa.dao.JpaTextEnvelopeDAO" /-->
+
+    <!-- For Dashboard (configured to use DscTextEnvelopeDAO) -->
+    <entry key="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" value="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" />
+  </section>
+
+  <!-- DscTextEnvelopeDAO initialization (configured to use file system store) -->
+  <section name="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO">
+    <!-- Use FileDataStoreContainerFactory to create DataStoreContainer instances. -->
+    <entry key="com.thruzero.domain.dsc.store.DataStoreContainerFactory" value="com.thruzero.domain.dsc.fs.FileDataStoreContainerFactory" />
+
+    <!-- Directory name to use for the base DscTextEnvelopeDAO store, within the root data store. -->
+    <entry key="base" value="DscTextEnvelopeDAO" />
+  </section>
+
+  <!-- Base UserDAO initialization -->
+  <section name="com.thruzero.auth.dao.UserDAO">
+    <!-- Model used to represent a user. -->
+    <entry key="userClass" value="com.thruzero.auth.model.impl.BasicUser" />
+  </section>
+
+  <!-- =========================================================================== -->
+  <!-- FileSystem Data-Store                                                       -->
+  <!-- =========================================================================== -->
+
+  <!-- Define application-specific file-system DataStoreContainer settings -->
+  <section name="com.thruzero.domain.dsc.fs.FileDataStoreContainerFactory">
+    <!-- full path to the root data store directory (can be anywhere on the file system) -->
+    <entry key="rootStorePath" value="[environment]{parentStorePath}/demo-data-store" />
+  </section>
+
+  <!-- ================================= JPA ================================= -->
+
+  <!-- JPA transaction -->
+  <section name="com.thruzero.common.core.transaction.TransactionMgr">
+    <entry key="com.thruzero.common.core.transaction.TransactionMgr" value="com.thruzero.domain.jpa.transaction.JpaDatabaseTransactionMgr" />
+  </section>
+
+  <!-- Application-specific JPA settings -->
+  <section name="com.thruzero.domain.jpa.transaction.JpaDatabaseTransactionMgr">
+    <entry key="persistence-unit.name" value="jq-test-mobile-domain-manager" />
+
+    <entry key="javax.persistence.jdbc.user" value="[environment]{jdbcUser}" />
+    <entry key="javax.persistence.jdbc.password" value="[environment]{jdbcPassword}" />
+    <entry key="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+    <entry key="javax.persistence.jdbc.url" value="[environment]{jdbcUrl}" />
+    <entry key="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />
+    <entry key="hibernate.max_fetch_depth" value="3" />
+    <entry key="hibernate.show_sql" value="false" />
+    <entry key="hibernate.format_sql" value="false" />
+  </section>
+
+</configuration>
+

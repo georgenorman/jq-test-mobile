@@ -1,0 +1,62 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ Page used to CREATE new records of InputsModel.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+<ui:composition template="/common/templates/simplePageTemplate.xhtml">
+  <ui:param name="title" value="#{resources['crud.create.header.text']}" />
+  <ui:param name="contentFormId" value="crudCreateViewerForm" />
+
+  <!-- HEADER -->
+  <ui:define name="header">
+    <ui:include src="/common/compositions/standardHeader.xhtml">
+      <ui:param name="backLink" value="/apps/demo/crudList.jsf"/>
+      <ui:param name="backLabel" value="Back"/>
+      <ui:param name="backIcon" value="back"/>
+      <ui:param name="backTransition" value="#{demoStateBean.flipDataTransition}"/>
+      <ui:param name="headerText" value="#{resources['crud.create.header.text']}" />
+      <ui:param name="headerFormId" value="crudCreateViewerHeaderForm" />
+    </ui:include>
+  </ui:define>
+
+  <!-- CONTENT -->
+  <ui:define name="content">
+    <ui:include src="/apps/demo/crud/compositions/inputsEditor.xhtml">
+      <ui:param name="inputsViewerBean" value="#{crudInputsViewerBean}"/>
+      <ui:param name="readOnly" value="false"/>
+    </ui:include>
+
+    <tzh:commandButton value="Save" data-icon="check" data-theme="#{themeStateBean.model.okButtonDataTheme}"
+         data-transition="#{demoStateBean.flipDataTransition}" data-direction="reverse" data-mini="true" data-inline="true"
+         action="#{crudInputsViewerBean.saveAction}" id="post2" onclick="showPageLoadingIndicator();" />
+  </ui:define>
+
+</ui:composition>
+
+</html>

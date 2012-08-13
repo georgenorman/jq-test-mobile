@@ -1,0 +1,97 @@
+/*
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ PARAMS:
+  ~   - width: spacer width.
+  ~   - height: spacer height.
+  ~   - rendered: if true or empty, the spacer is rendered.
+  ~
+*/
+
+.todo {
+  color: red;
+  font-style: italic;
+}
+
+.ui-page * {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+
+  -webkit-backface-visibility: hidden;
+}
+
+.simple-divider {
+  border:1px inset #fff;
+  margin-top:12px;
+  margin-bottom:12px;
+}
+
+.simple-info-bar {
+  color: #00529B;
+  background-color: #ffc;
+  margin-bottom: 12px;
+  border: thin solid #8b0000;
+  line-height: normal;
+  padding: 6px;
+}
+
+.simple-warn-bar {
+  color: #00529B;
+  background-color: #ffc;
+  margin-bottom: 12px;
+  border: thin solid #8b0000;
+  line-height: normal;
+  padding: 6px;
+  width: 100%;
+}
+
+.simple-error-bar {
+  color: #00529B;
+  background-color: #fde;
+  margin-bottom: 12px;
+  border: thin solid #8b0000;
+  line-height: normal;
+  padding: 6px;
+  width: 100%;
+}
+
+.right-wide-column {
+  width: 99%;
+  text-align:left;
+}
+
+.about-demo-header {
+  color: white;
+  background-color: black;
+}
+
+.about-demo-table {
+  border-collapse: collapse;
+  width: 300px;
+  margin-bottom: 12px;
+  margin-right:12px;
+  font-size: smaller;
+}
+
+.col-1 {
+  width: 300px;
+  float: left;
+}
+
+.col-2 {
+  width: 300px;
+  float: right;
+}

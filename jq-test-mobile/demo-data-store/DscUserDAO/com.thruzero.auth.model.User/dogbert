@@ -1,0 +1,25 @@
+<com.thruzero.auth.model.impl.BasicUser>
+  <id class="EntityPath">
+    <containerPath>
+      <path>/com.thruzero.auth.model.User/</path>
+    </containerPath>
+    <entityName>dogbert</entityName>
+  </id>
+  <loginId>dogbert</loginId>
+  <password>c153aa8262a280cc6c6fea2672fd2c36</password>
+  <invalidLoginCount>0</invalidLoginCount>
+  <invalidLoginLockoutTime>0</invalidLoginLockoutTime>
+  <status>A</status>
+  <permissions>
+    <com.thruzero.auth.model.impl.BasicUserPermission>
+      <domain>demoSecure2</domain>
+      <actions>view,edit,create</actions>
+      <description></description>
+    </com.thruzero.auth.model.impl.BasicUserPermission>
+  </permissions>
+  <details class="com.thruzero.auth.model.impl.BasicUserDetails">
+    <firstName>Dogbert</firstName>
+    <lastName>Adams</lastName>
+    <primaryEmail>dogbert@thruzero.com</primaryEmail>
+  </details>
+</com.thruzero.auth.model.impl.BasicUser>

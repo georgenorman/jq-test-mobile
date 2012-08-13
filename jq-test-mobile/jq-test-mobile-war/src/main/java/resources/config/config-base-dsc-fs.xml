@@ -1,0 +1,95 @@
+<!--
+  - SAMPLE CONFIGURATION FEATURING DSC-FILE-SYSTEM DATA STORE
+  -
+  - See "initFilter" in web.xml:
+  -    <init-param>
+  -      <param-name>config-file-path</param-name>
+  -      <param-value>${pftest18_config_dir_path_env}/config-base-dsc-fs.xml</param-value>
+  -    </init-param>
+  -
+  - This is the base config file for a DSC configuration using the file system (as a data store).
+  - It can be located anywhere on the file system (so the same WAR can be used for DEV, PRE and PRD).
+  - It can be selected in web.xml; the "${pftest18_config_dir_path_env}" environment var (optional).
+  -->
+<configuration>
+  <include name="config-common.xml" />
+
+  <!-- =========================================================================== -->
+  <!-- Services                                                                    -->
+  <!-- =========================================================================== -->
+
+  <!-- Service Registry - Services can be registered here (and will be combined with any other "com.thruzero.common.core.service.Service" sections included -->
+  <section name="com.thruzero.common.core.service.Service">
+    <!-- - DSC-specific domain services (explicit DSC) -->
+    <entry key="com.thruzero.domain.dsc.service.DscInfoNodeService" value="com.thruzero.domain.dsc.service.DscInfoNodeService" />
+
+    <!-- - Demo application services -->
+    <entry key="com.thruzero.domain.demo.service.GuestBookService" value="com.thruzero.domain.demo.service.GuestBookService" />
+    <entry key="com.thruzero.domain.demo.service.InputsService" value="com.thruzero.domain.demo.service.InputsService" />
+  </section>
+
+  <!-- ===============================================================================
+        DAO Registry (Combination of DSC and HTTP Data-Stores)
+          - If the Locator component was replaced by CID, then these config entries would be replaced by
+            similar entries in the beans.xml file, since these services are equivalent to @Alternative.
+       =============================================================================== -->
+
+  <!-- DAO Registry - DAOs can be registered here (and will be combined with any other "com.thruzero.domain.dao.DAO" sections included -->
+  <section name="com.thruzero.domain.dao.DAO">
+    <!-- DSC -->
+    <entry key="com.thruzero.domain.dao.TextEnvelopeDAO" value="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" />
+    <entry key="com.thruzero.domain.dao.SettingDAO" value="com.thruzero.domain.dsc.dao.DscSettingDAO" />
+    <entry key="com.thruzero.domain.dao.PreferenceDAO" value="com.thruzero.domain.dsc.dao.DscPreferenceDAO" />
+    <entry key="com.thruzero.auth.dao.UserDAO" value="com.thruzero.auth.dsc.dao.DscUserDAO" />
+
+    <!-- Dashboard (configured to use DscTextEnvelopeDAO) -->
+    <entry key="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" value="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" />
+
+    <!-- GuestBookService (configured to use HttpSession store) -->
+    <entry key="com.thruzero.domain.demo.dao.GuestBookMessageDAO" value="com.thruzero.applications.faces.demo.dao.jsf.HttpSessionGuestBookMessageDAO" />
+
+    <!-- For InputsService (using HttpSession) -->
+    <entry key="com.thruzero.domain.demo.dao.InputsDAO" value="com.thruzero.applications.faces.demo.dao.jsf.HttpSessionInputsDAO" />
+  </section>
+
+  <!-- DscTextEnvelopeDAO initialization (configured to use file system store) -->
+  <section name="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO">
+    <entry key="com.thruzero.domain.dsc.store.DataStoreContainerFactory" value="com.thruzero.domain.dsc.fs.FileDataStoreContainerFactory" />
+    <entry key="base" value="DscTextEnvelopeDAO" />
+  </section>
+
+  <!-- DscPreferenceDAO initialization (configured to use file system store) -->
+  <section name="com.thruzero.domain.dsc.dao.DscPreferenceDAO">
+    <entry key="com.thruzero.domain.dsc.store.DataStoreContainerFactory" value="com.thruzero.domain.dsc.fs.FileDataStoreContainerFactory" />
+    <entry key="base" value="DscPreferenceDAO" />
+  </section>
+
+  <!-- DscSettingDAO initialization (configured to use file system store) -->
+  <section name="com.thruzero.domain.dsc.dao.DscSettingDAO">
+    <entry key="com.thruzero.domain.dsc.store.DataStoreContainerFactory" value="com.thruzero.domain.dsc.fs.FileDataStoreContainerFactory" />
+    <entry key="base" value="DscSettingDAO" />
+  </section>
+
+  <!-- Base UserDAO initialization -->
+  <section name="com.thruzero.auth.dsc.dao.DscUserDAO">
+    <entry key="com.thruzero.domain.dsc.store.DataStoreContainerFactory" value="com.thruzero.domain.dsc.fs.FileDataStoreContainerFactory" />
+    <entry key="base" value="DscUserDAO" />
+  </section>
+
+  <!-- =========================================================================== -->
+  <!-- FileSystem Data-Store                                                       -->
+  <!-- =========================================================================== -->
+
+  <!-- Define application-specific file-system DataStoreContainer settings -->
+  <section name="com.thruzero.domain.dsc.fs.FileDataStoreContainerFactory">
+    <!-- full path to the root data store directory (can be anywhere on the file system) -->
+    <entry key="rootStorePath" value="[environment]{parentStorePath}/demo-data-store" />
+  </section>
+
+  <!-- DSC transaction -->
+  <section name="com.thruzero.common.core.transaction.TransactionMgr">
+    <entry key="com.thruzero.common.core.transaction.TransactionMgr" value="com.thruzero.domain.dsc.fs.DscTransactionMgr" />
+  </section>
+
+</configuration>
+

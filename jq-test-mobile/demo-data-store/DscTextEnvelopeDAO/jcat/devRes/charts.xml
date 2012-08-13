@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<properties>
+    <!-- Charts -->
+    <chart id="1">
+      <title>Linear Chart</title>
+      <collection>
+        <series label="Series 1" markerStyle="">2,1, 3, 6, 8</series>
+        <series label="Series 2" markerStyle="diamond">6, 3, 2, 7, 9</series>
+      </collection>
+    </chart>
+
+    <chart id="2">
+      <title>Pie Chart</title>
+      <map>
+        <entry key="Brand 1">540</entry>
+        <entry key="Brand 2">325</entry>
+        <entry key="Brand 3">702</entry>
+        <entry key="Brand 4">421</entry>
+      </map>
+    </chart>
+
+    <chart id="3">
+      <title>Sample Bubble Chart</title>
+      <bubbles>
+        <bubble x="70" y="183" radius="55">Acura</bubble>
+        <bubble x="45" y="92" radius="36">Alfa Romeo</bubble>
+        <bubble x="24" y="104" radius="40">AM General</bubble>
+        <bubble x="50" y="123" radius="60">Bugatti</bubble>
+        <bubble x="15" y="89" radius="25">BMW</bubble>
+        <bubble x="40" y="180" radius="80">Audi</bubble>
+        <bubble x="70" y="70" radius="48">Aston Martin</bubble>
+      </bubbles>
+    </chart>
+
+    <chart id="4">
+      <title>Sample Meter Gauge</title>
+      <series>20, 50, 120, 220</series>
+    </chart>
+</properties>

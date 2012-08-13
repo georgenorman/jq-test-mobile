@@ -1,0 +1,49 @@
+= jq-test-mobile
+
+JQuery Test Mobile (jq-test-mobile) is a sample application for testing
+tz-commons using a mobile browser. It's configurable for JPA,
+Hibernate, DSC file system or DSC web service, by simply changing the
+base-config file in web.xml (which means that all of the jars for all
+four data-store types will be included in the lib dir; the unwanted
+jars can be removed by updating the pom).
+
+A live demo is available:
+
+http://www.thruzero.com/jq-test-mobile/apps/demo/dashboard.jsf
+
+See this link for documentation:
+
+http://www.thruzero.com/projects/jq-test-mobile/index.html
+
+== Build
+
+1. Open a command shell, and cd to the project directory. Example:
+
+   cd c:/projects/jq-test-mobile
+
+2. Build using maven2 (I used apache-maven-2.2.1 with jdk1.6.0_07):
+
+   mvn clean install
+
+This will build 'jq-test-mobile.war'.
+
+NOTE: The tz-commons jar files are required for this application.
+They should be available in the central (or other) repo by the time
+anyone attempts to build this app. If not, then tz-commons can be
+built locally, which will install the jars in your local maven repo.
+
+== License
+
+Copyright 2012 George Norman
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this software except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

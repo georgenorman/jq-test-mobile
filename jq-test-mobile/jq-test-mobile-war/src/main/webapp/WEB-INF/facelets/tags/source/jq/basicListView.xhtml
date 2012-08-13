@@ -1,0 +1,63 @@
+
+<f:view
+  xmlns:jsp="http://java.sun.com/JSP/Page"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ A basic JQuery mobile list.
+  ~
+  ~ PARAMS:
+  ~   - listHeaderText: text for the list's header.
+  ~   - rendered: when true, the component will be rendered.
+  ~   - dataTheme: JQuery data-theme to use.
+  ~   - dataDividertheme: JQuery data-dividertheme to use.
+  ~   - dataFilter: JQuery data-filter to use.
+  ~   - listBody: region include for the list's body.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+
+  <html>
+<ui:composition>
+  <tzc:ternaryDefault var="basicListView_listHeaderText" condition="#{empty listHeaderText}" valueIfTrue="" valueIfFalse="#{listHeaderText}" />
+  <tzc:ternaryDefault var="basicListView_rendered" condition="#{empty rendered}" valueIfTrue="true" valueIfFalse="#{rendered}" />
+  <tzc:ternaryDefault var="basicListView_dataTheme" condition="#{empty dataTheme}" valueIfTrue="#{themeStateBean.model.dataListViewDataTheme}" valueIfFalse="#{dataTheme}" />
+  <tzc:ternaryDefault var="basicListView_dataDividertheme" condition="#{empty dataDividertheme}" valueIfTrue="#{themeStateBean.model.dataListViewDividerTheme}" valueIfFalse="#{dataDividertheme}" />
+  <tzc:ternaryDefault var="basicListView_dataFilter" condition="#{empty dataFilter}" valueIfTrue="false" valueIfFalse="#{dataFilter}" />
+
+  <h:panelGroup rendered="#{basicListView_rendered}">
+    <ul data-role="listview" data-inset="false" data-theme="#{basicListView_dataTheme}" data-dividertheme="#{basicListView_dataDividertheme}" style="margin-bottom: 18px;" data-filter="#{basicListView_dataFilter}">
+      <h:panelGroup rendered="#{not empty basicListView_listHeaderText}"><li data-role="list-divider">#{basicListView_listHeaderText}</li></h:panelGroup>
+
+      <ui:insert name="listBody">
+        Default List Body Area.
+      </ui:insert>
+
+    </ul>
+  </h:panelGroup>
+
+</ui:composition>
+</html>
+
+</f:view>

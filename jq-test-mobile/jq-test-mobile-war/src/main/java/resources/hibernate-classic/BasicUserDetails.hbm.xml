@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!--
+   - Example mapping file. Copy this file to the application's domain module, then rename the table and columns
+   - to match the actual table and column names (this file should reside in the application's domain jar).
+ -->
+<hibernate-mapping package="com.thruzero.auth.model.impl" default-access="field">
+
+  <class name="BasicUserDetails" table="USER_DETAILS">
+
+    <!-- Common id property -->
+    <id name="id" column="USER_DETAILS_ID" type="long">
+      <generator class="increment"/>
+    </id>
+
+    <property name="firstName" type="string" column="FIRST_NAME" />
+    <property name="middleName" type="string" column="MIDDLE_NAME" />
+    <property name="lastName" type="string" column="LAST_NAME" />
+    <property name="primaryEmail" type="string" column="PRIMARY_EMAIL" />
+    <property name="secondaryEmail" type="string" column="SECONDARY_EMAIL" />
+    <property name="workEmail" type="string" column="WORK_EMAIL" />
+    <property name="primaryPhone" type="string" column="PRIMARY_PHONE" />
+    <property name="secondaryPhone" type="string" column="SECONDARY_PHONE" />
+    <property name="workPhone" type="string" column="WORK_PHONE" />
+
+  </class>
+
+</hibernate-mapping>

@@ -1,0 +1,82 @@
+<!--
+  ~ Copyright (c) 2012 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  ~ Authentication page, used for login and logout.
+  ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:jqmb="http://www.thruzero.com/jq-mobile-basic"
+  xmlns:tzh="http://www.thruzero.com/tz-html5"
+  xmlns:tzc="http://www.thruzero.com/tz-core"
+  >
+
+<ui:composition template="/common/templates/simplePageTemplate.xhtml">
+  <ui:param name="title" value="#{resources['authentication.header.text']}" />
+  <ui:param name="contentFormId" value="loginForm" />
+
+  <!-- HEADER -->
+  <ui:define name="header">
+    <ui:include src="/common/compositions/standardHeader.xhtml">
+      <ui:param name="backLink" value="/apps/demo/dashboard.jsf" />
+      <ui:param name="headerText" value="#{resources['authentication.header.text']}" />
+    </ui:include>
+  </ui:define>
+
+  <!-- CONTENT -->
+  <ui:define name="content">
+
+  <h:panelGroup rendered="#{!demoUserBean.loggedIn}">
+    <h:inputHidden id="oneTimePw" name="oneTimePw" value="#{loginBean.oneTimePw}" />
+
+    <tzc:notificationPanel style="white-space:pre;" rendered="true" width="603"
+      message="Test logins:&#010;  &#8226; 'dilbert'/'d1lb3rt'&#010;  &#8226; 'wally'/'w@lly'&#010;  &#8226; 'sally'/'s@lly'."/>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="loginId" value="* Login ID: " />
+      <tzh:inputText required="true" name="loginId" id="loginId" maxlength="100" requiredMessage="The 'Login ID' field is required." value="#{loginBean.loginId}"
+        placeholder="ID or email address" data-mini="true" data-theme="#{themeStateBean.model.textFieldHilightDataTheme}" />
+    </div>
+
+    <div data-role="fieldcontain">
+      <h:outputLabel for="password" value="* Password: " />
+      <tzh:inputSecret required="true" name="password" id="password" maxlength="100" requiredMessage="The 'Password' field is required." value="#{loginBean.password}"
+        data-mini="true" data-theme="#{themeStateBean.model.textFieldHilightDataTheme}" />
+    </div>
+
+    <tzh:commandButton value="Login" data-icon="check" data-theme="#{themeStateBean.model.okButtonDataTheme}" action="/apps/demo/login.jsf?faces-redirect=true"
+         data-mini="true" data-inline="true" actionListener="#{loginBean.loginListener}" id="post2" onclick="encryptPassword('loginForm'); showPageLoadingIndicator();" />
+  </h:panelGroup>
+
+  <h:panelGroup rendered="#{demoUserBean.loggedIn}">
+
+    <tzc:notificationPanel style="white-space:pre;" rendered="true" width="603"
+      message="You are logged in as '#{demoUserBean.formalName}'."/>
+
+    <tzh:commandButton value="Log Out" data-icon="delete" data-theme="#{themeStateBean.model.deleteButtonDataTheme}" action="/apps/demo/login.jsf?faces-redirect=true"
+         data-mini="true" data-inline="true" actionListener="#{demoUserBean.logoutListener}" id="post3" onclick="showPageLoadingIndicator();" />
+  </h:panelGroup>
+
+  </ui:define>
+
+</ui:composition>
+
+</html>

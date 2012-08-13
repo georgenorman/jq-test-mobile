@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author>George Norman</author>
+    <title>jq-test-mobile-domain</title>
+  </properties>
+  <body>
+    <section name="Overview">
+      <p>
+        The <b>jq-test-mobile-domain</b> module contains demo-related domain code.
+      </p>
+    </section>
+
+  </body>
+</document>

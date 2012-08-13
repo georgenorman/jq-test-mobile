@@ -1,0 +1,89 @@
+<!--
+  - SAMPLE CONFIGURATION FEATURING HIBERNATE DATA STORE
+  -
+  - See "initFilter" in web.xml:
+  -    <init-param>
+  -      <param-name>config-file-path</param-name>
+  -      <param-value>${pftest18_config_dir_path_env}/config-base-hibernate.xml</param-value>
+  -    </init-param>
+  -
+  - This is the base config file for a Hibernate configuration.
+  - It can be located anywhere on the file system (so the same WAR can be used for DEV, PRE and PRD).
+  - It can be selected in web.xml; the "${pftest18_config_dir_path_env}" environment var (optional).
+  -->
+<configuration>
+  <include name="config-common.xml" />
+
+  <!-- =========================================================================== -->
+  <!-- Services                                                                    -->
+  <!-- =========================================================================== -->
+
+  <!-- Service Registry - Services can be registered here (and will be combined with any other "com.thruzero.common.core.service.Service" sections included -->
+  <section name="com.thruzero.common.core.service.Service">
+    <!-- - DSC-specific domain services -->
+    <entry key="com.thruzero.domain.dsc.service.DscInfoNodeService" value="com.thruzero.domain.dsc.service.DscInfoNodeService" />
+
+    <!-- - Demo application services -->
+    <entry key="com.thruzero.domain.demo.service.GuestBookService" value="com.thruzero.domain.demo.service.GuestBookService" />
+  </section>
+
+  <!-- ===============================================================================
+        DAO Registry (Combination of Hibernate, DSC and HTTP Data-Stores)
+          - If the Locator component was replaced by CID, then these config entries would be replaced by
+            similar entries in the beans.xml file, since these services are equivalent to @Alternative.
+       =============================================================================== -->
+
+  <!-- DAO Registry - DAOs can be registered here (and will be combined with any other "com.thruzero.domain.dao.DAO" sections included -->
+  <section name="com.thruzero.domain.dao.DAO">
+    <!-- Hibernate -->
+    <entry key="com.thruzero.domain.dao.TextEnvelopeDAO" value="com.thruzero.domain.hibernate.dao.HibernateTextEnvelopeDAO" />
+    <entry key="com.thruzero.domain.dao.PreferenceDAO" value="com.thruzero.domain.hibernate.dao.HibernatePreferenceDAO" />
+    <entry key="com.thruzero.domain.dao.SettingDAO" value="com.thruzero.domain.hibernate.dao.HibernateSettingDAO" />
+
+    <entry key="com.thruzero.auth.dao.UserDAO" value="com.thruzero.auth.hibernate.dao.HibernateUserDAO" />
+
+    <!-- GuestBookService (configured to use HttpSession store) -->
+    <entry key="com.thruzero.domain.demo.dao.GuestBookMessageDAO" value="com.thruzero.applications.faces.demo.dao.jsf.HttpSessionGuestBookMessageDAO" />
+
+    <!-- GuestBookService (configured to use Hibernate store) -->
+    <!-- entry key="com.thruzero.domain.demo.dao.GuestBookMessageDAO" value="com.thruzero.domain.demo.dao.Hibernate.HibernateGuestBookMessageDAO" /-->
+
+    <!-- Dashboard (configured to use DscTextEnvelopeDAO) -->
+    <entry key="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" value="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" />
+  </section>
+
+  <!-- DscTextEnvelopeDAO initialization (configured to use file system store) -->
+  <section name="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO">
+    <entry key="com.thruzero.domain.dsc.store.DataStoreContainerFactory" value="com.thruzero.domain.dsc.fs.FileDataStoreContainerFactory" />
+    <entry key="base" value="DscTextEnvelopeDAO" />
+  </section>
+
+  <!-- Base UserDAO initialization -->
+  <section name="com.thruzero.auth.dao.UserDAO">
+    <entry key="userClass" value="com.thruzero.auth.model.impl.BasicUser" />
+  </section>
+
+  <!-- =========================================================================== -->
+  <!-- FileSystem Data-Store                                                       -->
+  <!-- =========================================================================== -->
+
+  <!-- Define application-specific file-system DataStoreContainer settings -->
+  <section name="com.thruzero.domain.dsc.fs.FileDataStoreContainerFactory">
+    <!-- full path to the root data store directory (can be anywhere on the file system) -->
+    <entry key="rootStorePath" value="[environment]{parentStorePath}/demo-data-store" />
+  </section>
+
+  <!-- ================================= Hibernate ================================= -->
+
+  <!-- Hibernate transaction -->
+  <section name="com.thruzero.common.core.transaction.TransactionMgr">
+    <entry key="com.thruzero.common.core.transaction.TransactionMgr" value="com.thruzero.domain.hibernate.transaction.HibernateDatabaseTransactionMgr" />
+  </section>
+
+  <section name="com.thruzero.domain.hibernate.transaction.HibernateDatabaseTransactionMgr">
+    <!-- full path to hibernate.cfg.xml (must be on class path) -->
+    <entry key="hibernateConfigFileUri" value="./resources/hibernate-classic/[environment]{hibernateConfigFileName}" />
+  </section>
+
+</configuration>
+

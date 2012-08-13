@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author>George Norman</author>
+    <title>JQuery test using ThruZero Commons</title>
+  </properties>
+  <body>
+    <section name="Overview">
+      <p>
+        <b>JQuery-Test-Mobile</b> (jq-test-mobile) is a sample application, for a mobile browser, used to test tz-commons.
+        It's configurable for JPA, Hibernate, DSC file system or DSC web service, by simply changing the base-config file in web.xml
+        (which means that all of the jars for all four data-store types are in the lib dir; the unwanted jars can be removed by updating the pom).
+      </p>
+      <p>A live test can be found <a href="http://www.thruzero.com/jq-test-mobile/apps/demo/dashboard.jsf">here</a>.
+        <br/><img src="images/splash.png" /> <img src="images/dashboard.png" />
+        <hr/>
+        <br/><img src="images/crud.png" /> <img src="images/edit.png" />
+        <hr/>
+        <br/><img src="images/auth.png" /> <img src="images/dialog.png" />
+      </p>
+      <p>
+        The JQuery-mobile Test is divided into the following modules:
+        <ul>
+          <li><b>jq-test-mobile-war</b>: Tests tz-commons using some of the following JQuery components:
+            <ul>
+              <li>Lists</li>
+              <li>Accordion Panels (using JPA and DSC concurrently)</li>
+              <li>Dialogs</li>
+              <li>Navigation Buttons</li>
+              <li>Command Buttons</li>
+            </ul>
+            <i>Plus, some custom components:</i>
+            <ul>
+              <li>Authentication (Shiro integration)</li>
+              <li>Guest Book</li>
+              <li>Escape Utility</li>
+            </ul>
+          </li>
+          <li><b>jq-test-mobile-domain</b>: Contains demo-related domain code. Following are some examples:
+            <ul>
+              <li>DAO and Service for the GuestBook component (e.g., GuestBookMessageDAO interface, JpaGuestBookMessageDAO implementation, GuestBookService, etc).</li>
+              <li>SQL code to create the database account (testy_schema), MySql tables and sample data.</li>
+              <li>Hibernate-JPA mapping files. This enables the table and column names to be defined outside of tz-commons.</li>
+            </ul>
+          </li>
+        </ul>
+      </p>
+    </section>
+
+  </body>
+</document>

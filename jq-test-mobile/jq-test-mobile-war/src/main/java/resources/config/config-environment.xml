@@ -1,0 +1,39 @@
+<!--
+  - This file contains values that are expected to change between different deploy environments (e.g., DEV, PRE, PRD).
+  -->
+<configuration>
+
+  <!-- ************************************************************* -->
+  <!-- environment -->
+  <!-- ************************************************************* -->
+
+  <section name="environment">
+    <!-- Path to the data store's parent directory; "demo-data-store" is appended to this in each of the base config files. -->
+    <entry key="parentStorePath" value="C:/Users/George/Projects/_projects.jsf/jq-test-mobile"/>
+
+    <!-- database user -->
+    <entry key="jdbcUser" value="testy" />
+
+    <!-- database URL -->
+    <entry key="jdbcUrl" value="jdbc:mysql://localhost:3306/testy_schema" />
+
+    <!-- database password -->
+    <entry key="jdbcPassword" value="GsXez0K6dd8" />
+
+    <!-- passphrase -->
+    <entry key="passphrase" value="TestPassPhrase" />
+
+    <!-- email enabled: if true, email will be sent -->
+    <entry key="emailEnabled" value="false" />
+
+    <!-- email logging enabled: if true, email info will be written to the log file -->
+    <entry key="emailLoggingEnabled" value="false" />
+
+    <!-- web service root -->
+    <entry key="rootServiceUri" value="http://localhost:8080/ws-test1/rws/" />
+
+    <!-- hibernate config file name -->
+    <entry key="hibernateConfigFileName" value="hibernate.cfg-DEV.xml" />
+  </section>
+
+</configuration>
