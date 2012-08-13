@@ -7,7 +7,7 @@
       <link href="/apps/demo/dscPanels.jsf">DSC Panels</link>
     </panel>
 
-    <panel id="componentTests" title="Miscellaneous Tests" type="simple">
+    <panel id="miscellaneousTests" title="Miscellaneous Tests" type="simple">
       <link href="/apps/demo/crudList.jsf" refresh="true">CRUD</link>
       <link href="/apps/demo/ajax.jsf" refresh="true">Ajax</link>
     </panel>
