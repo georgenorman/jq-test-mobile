@@ -1,10 +1,4 @@
 <com.thruzero.auth.model.impl.BasicUser>
-  <id class="EntityPath">
-    <containerPath>
-      <path>/com.thruzero.auth.model.User/</path>
-    </containerPath>
-    <entityName>dilbert</entityName>
-  </id>
   <loginId>dilbert</loginId>
   <password>fb5a4dff834b510cfc40c898794d2246</password>
   <invalidLoginCount>0</invalidLoginCount>

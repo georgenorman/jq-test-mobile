@@ -28,6 +28,7 @@ import com.thruzero.domain.locator.DAOLocator;
  * Manages CRUD operations for the guest book.
  *
  * @author George Norman
+ * @see com.thruzero.domain.demo.model.GuestBookMessage
  */
 public class GuestBookService implements Service, SimpleInfoProvider {
   private final GuestBookMessageDAO guestBookMessageDAO = DAOLocator.locate(GuestBookMessageDAO.class);

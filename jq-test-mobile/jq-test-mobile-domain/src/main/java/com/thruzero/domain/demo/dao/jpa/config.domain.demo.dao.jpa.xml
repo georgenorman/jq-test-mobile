@@ -6,7 +6,9 @@
 
   <section name="com.thruzero.domain.dao.DAO">
     <entry key="com.thruzero.domain.demo.dao.GuestBookMessageDAO" value="com.thruzero.domain.demo.dao.jpa.JpaGuestBookMessageDAO" />
-    <entry key="com.thruzero.domain.demo.dao.InputsDAO" value="com.thruzero.domain.demo.dao.jpa.JpaInputsDAO" />
+
+    <entry key="com.thruzero.domain.demo.dao.InputsDAO" value="com.thruzero.domain.demo.dao.dsc.DscInputsDAO" />
+    <entry key="com.thruzero.domain.jpa.dao.JpaTextEnvelopeDAO" value="com.thruzero.domain.jpa.dao.JpaTextEnvelopeDAO" />
    </section>
 
 </configuration>

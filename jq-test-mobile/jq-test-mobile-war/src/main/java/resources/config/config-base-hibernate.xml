@@ -58,11 +58,6 @@
     <entry key="base" value="DscTextEnvelopeDAO" />
   </section>
 
-  <!-- Base UserDAO initialization -->
-  <section name="com.thruzero.auth.dao.UserDAO">
-    <entry key="userClass" value="com.thruzero.auth.model.impl.BasicUser" />
-  </section>
-
   <!-- =========================================================================== -->
   <!-- FileSystem Data-Store                                                       -->
   <!-- =========================================================================== -->

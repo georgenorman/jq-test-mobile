@@ -25,12 +25,18 @@
   <!-- Service Registry -->
 
   <section name="com.thruzero.common.core.service.Service">
+    <!-- common domain services -->
     <entry key="com.thruzero.domain.service.InfoNodeService" value="com.thruzero.domain.service.impl.GenericInfoNodeService" />
     <entry key="com.thruzero.domain.service.PreferenceService" value="com.thruzero.domain.service.impl.GenericPreferenceService" />
     <entry key="com.thruzero.domain.service.SettingService" value="com.thruzero.domain.service.impl.GenericSettingService" />
     <entry key="com.thruzero.domain.service.MailService" value="com.thruzero.domain.service.impl.SimpleMailService" />
 
+    <!-- common domain services -->
     <entry key="com.thruzero.auth.service.UserService" value="com.thruzero.auth.service.impl.GenericUserService" />
+
+    <!-- demo-specific services -->
+    <entry key="com.thruzero.domain.demo.service.GuestBookService" value="com.thruzero.domain.demo.service.GuestBookService" />
+    <entry key="com.thruzero.domain.demo.service.InputsService" value="com.thruzero.domain.demo.service.InputsService" />
   </section>
 
   <!-- SimpleMailService configuration -->
@@ -38,6 +44,16 @@
   <section name="com.thruzero.domain.service.impl.SimpleMailService">
     <entry key="emailEnabled" value="[environment]{emailEnabled}" />
     <entry key="emailLoggingEnabled" value="[environment]{emailLoggingEnabled}" />
+  </section>
+
+  <!-- *************************************************************
+       Common DAO configuration
+       ************************************************************* -->
+
+  <!-- Base UserDAO initialization -->
+  <section name="com.thruzero.auth.dao.UserDAO">
+    <!-- Model used to represent a user. -->
+    <entry key="userClass" value="com.thruzero.auth.model.impl.BasicUser" />
   </section>
 
   <!-- *************************************************************
@@ -103,7 +119,7 @@
     <entry key="commons-collections" value="http://commons.apache.org/collections/" />
     <entry key="commons-lang3" value="http://commons.apache.org/lang/" />
     <entry key="jfig" value="http://jfig.sourceforge.net/" />
-    <entry key="tz-commons-core" value="http://www.thruzero.com/projects/tz-commons/index.html" />
+    <entry key="tz-commons-core" value="https://github.com/georgenorman/tz-commons" />
   </section>
 
 </configuration>

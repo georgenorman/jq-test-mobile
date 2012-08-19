@@ -26,9 +26,10 @@ import com.thruzero.domain.demo.model.InputsModel;
 import com.thruzero.domain.locator.DAOLocator;
 
 /**
- * Manages CRUD operations for the inputs test.
+ * Manages CRUD operations for the inputs form test.
  *
  * @author George Norman
+ * @see com.thruzero.domain.demo.model.InputsModel
  */
 public class InputsService implements Service, SimpleInfoProvider {
   private final InputsDAO inputsDAO = DAOLocator.locate(InputsDAO.class);

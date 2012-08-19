@@ -21,6 +21,8 @@ import com.thruzero.domain.dao.DAO;
 import com.thruzero.domain.dao.impl.DAORegistry;
 import com.thruzero.domain.demo.dao.GuestBookMessageDAO;
 import com.thruzero.domain.demo.dao.InputsDAO;
+import com.thruzero.domain.demo.dao.dsc.DscInputsDAO;
+import com.thruzero.domain.jpa.dao.JpaTextEnvelopeDAO;
 import com.thruzero.domain.locator.DAOLocator;
 
 /**
@@ -47,7 +49,9 @@ public class JpaDemoDAORegistry extends DAORegistry {
     new LocatorLogHelper(JpaDemoDAORegistry.class).logBeginRegisterInterfaces(DAO.class.getName(), JpaDemoDAORegistry.class);
 
     DAOLocator.getRegistry().registerInterface(GuestBookMessageDAO.class, JpaGuestBookMessageDAO.class);
-    DAOLocator.getRegistry().registerInterface(InputsDAO.class, JpaInputsDAO.class);
+
+    DAOLocator.getRegistry().registerInterface(InputsDAO.class, DscInputsDAO.class); // DAO for InputsModel
+    DAOLocator.getRegistry().registerInterface(JpaTextEnvelopeDAO.class, JpaTextEnvelopeDAO.class); // DAO for DscInputsDAO
   }
 
 }

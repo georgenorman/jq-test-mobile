@@ -20,7 +20,7 @@ import com.thruzero.domain.demo.model.GuestBookMessage;
 import com.thruzero.domain.jpa.dao.JpaGenericDAO;
 
 /**
- * This is a concrete implementation of the GuestBookMessageDAO interface using JPA.
+ * This is a concrete implementation of the GuestBookMessageDAO interface using JPA - requires 'testy_schema'.'guest_book_message' table.
  * <p>
  * The GuestBookService will use any registered implementation for the GuestBookMessageDAO interface.
  * Below is an example of how to register the JpaGuestBookMessageDAO implementation declaratively:
