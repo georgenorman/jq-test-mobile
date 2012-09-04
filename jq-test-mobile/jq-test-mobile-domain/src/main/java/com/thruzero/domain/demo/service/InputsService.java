@@ -31,8 +31,14 @@ import com.thruzero.domain.locator.DAOLocator;
  * @author George Norman
  * @see com.thruzero.domain.demo.model.InputsModel
  */
-public class InputsService implements Service, SimpleInfoProvider {
+public final class InputsService implements Service, SimpleInfoProvider {
   private final InputsDAO inputsDAO = DAOLocator.locate(InputsDAO.class);
+
+  /**
+   * Use {@link com.thruzero.common.core.locator.ServiceLocator ServiceLocator} to access a particular Service.
+   */
+  private InputsService() {
+  }
 
   //TODO-p1(george) need to add criteria/filter (in case there are hundreds of items). Also, support pagination.
   public Collection<? extends InputsModel> getInputs() {

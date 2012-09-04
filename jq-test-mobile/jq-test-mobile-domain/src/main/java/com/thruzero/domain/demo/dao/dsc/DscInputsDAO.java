@@ -46,9 +46,12 @@ import com.thruzero.domain.dsc.dao.GenericDscDAO;
  *
  * @author George Norman
  */
-public class DscInputsDAO extends GenericDscDAO<InputsModel>  implements InputsDAO {
+public final class DscInputsDAO extends GenericDscDAO<InputsModel>  implements InputsDAO {
 
-  public DscInputsDAO() {
+  /**
+   * Use {@link com.thruzero.domain.locator.DAOLocator DAOLocator} to access a particular DAO.
+   */
+  private DscInputsDAO() {
     super(InputsModel.class);
   }
 

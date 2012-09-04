@@ -33,11 +33,11 @@ import com.thruzero.domain.locator.DAOLocator;
  * @author George Norman
  */
 @LocatorRegistryBookmark(comment = "JpaDemoDAORegistry")
-public class JpaDemoDAORegistry extends DAORegistry {
+public final class JpaDemoDAORegistry extends DAORegistry {
   private static final JpaDemoDAORegistry instance = new JpaDemoDAORegistry();
 
-  /** Allow for class extensions; disallow client instantiation */
-  protected JpaDemoDAORegistry() {
+  /** Use getInstance() to get an instance of this class. */
+  private JpaDemoDAORegistry() {
   }
 
   public static JpaDemoDAORegistry getInstance() {

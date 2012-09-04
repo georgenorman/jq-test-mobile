@@ -30,6 +30,10 @@ public class RssSanitizer {
   /** max size of description */
   public static final int MAX_TOOL_TIP_SIZE = 500;
 
+  /** This is a utility class - Allow for class extensions; disallow client instantiation */
+  protected RssSanitizer() {
+  }
+
   /** remove troublesome characters from given description */
   public static String sanitizeDescription(String description, final int maxSize) {
     // return immediately if description is empty

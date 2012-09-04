@@ -29,7 +29,7 @@ import com.thruzero.domain.jsf.dao.HttpSessionDAO;
  *
  * @author George Norman
  */
-public class HttpSessionGuestBookMessageDAO extends HttpSessionDAO<GuestBookMessage> implements GuestBookMessageDAO {
+public final class HttpSessionGuestBookMessageDAO extends HttpSessionDAO<GuestBookMessage> implements GuestBookMessageDAO {
 
   // ------------------------------------------------------
   // HttpMemoryGuestBookStore
@@ -84,7 +84,10 @@ public class HttpSessionGuestBookMessageDAO extends HttpSessionDAO<GuestBookMess
   // HttpSessionGuestBookMessageDAO
   // ============================================================================
 
-  public HttpSessionGuestBookMessageDAO() {
+  /**
+   * Use {@link com.thruzero.domain.locator.DAOLocator DAOLocator} to access a particular DAO.
+   */
+  private HttpSessionGuestBookMessageDAO() {
     super(new HttpMemoryGuestBookStore());
   }
 

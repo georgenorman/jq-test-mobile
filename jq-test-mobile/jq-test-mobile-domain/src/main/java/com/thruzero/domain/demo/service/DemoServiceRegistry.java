@@ -29,11 +29,11 @@ import com.thruzero.common.core.service.impl.ServiceRegistry;
  * @author George Norman
  */
 @LocatorRegistryBookmark(comment = "DemoServiceRegistry")
-public class DemoServiceRegistry extends ServiceRegistry {
+public final class DemoServiceRegistry extends ServiceRegistry {
   private static final DemoServiceRegistry instance = new DemoServiceRegistry();
 
-  /** Allow for class extensions; disallow client instantiation */
-  protected DemoServiceRegistry() {
+  /** Use getInstance() to get an instance of this class. */
+  private DemoServiceRegistry() {
   }
 
   public static DemoServiceRegistry getInstance() {

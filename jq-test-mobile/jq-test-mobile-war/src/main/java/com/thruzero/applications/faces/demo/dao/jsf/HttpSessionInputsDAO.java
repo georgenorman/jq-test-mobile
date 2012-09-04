@@ -24,7 +24,7 @@ import com.thruzero.domain.jsf.dao.HttpSessionDAO;
  *
  * @author George Norman
  */
-public class HttpSessionInputsDAO extends HttpSessionDAO<InputsModel> implements InputsDAO {
+public final class HttpSessionInputsDAO extends HttpSessionDAO<InputsModel> implements InputsDAO {
 
   // ------------------------------------------------------
   // HttpMemoryGuestBookStore
@@ -41,7 +41,10 @@ public class HttpSessionInputsDAO extends HttpSessionDAO<InputsModel> implements
   // HttpSessionGuestBookMessageDAO
   // ============================================================================
 
-  public HttpSessionInputsDAO() {
+  /**
+   * Use {@link com.thruzero.domain.locator.DAOLocator DAOLocator} to access a particular DAO.
+   */
+  private HttpSessionInputsDAO() {
     super(new HttpMemoryInputsStore());
   }
 }

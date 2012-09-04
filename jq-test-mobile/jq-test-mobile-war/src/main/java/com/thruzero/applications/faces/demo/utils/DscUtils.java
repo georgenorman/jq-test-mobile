@@ -28,6 +28,10 @@ import com.thruzero.domain.store.BaseStorePath;
  */
 public class DscUtils {
 
+  /** This is a utility class - Allow for class extensions; disallow client instantiation */
+  protected DscUtils() {
+  }
+
   public static void assertValidInfoNode(InfoNodeElement infoNode, String nodeName, InfoNodeService infoNodeService, EntityPath nodePath) {
     if (infoNode == null && infoNodeService instanceof DscInfoNodeService) {
       BaseStorePath baseStorePath = ((DscInfoNodeService)infoNodeService).getBaseStorePath();

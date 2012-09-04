@@ -24,7 +24,7 @@
           <li><b>jq-test-mobile-war</b>: Tests tz-commons using some of the following JQuery components:
             <ul>
               <li>Lists</li>
-              <li>Accordion Panels (using JPA and DSC concurrently)</li>
+              <li>Accordion Panels (one using JPA, another DSC)</li>
               <li>Dialogs</li>
               <li>Navigation Buttons</li>
               <li>Command Buttons</li>

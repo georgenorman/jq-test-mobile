@@ -33,9 +33,12 @@ import com.thruzero.domain.jpa.dao.JpaGenericDAO;
  * @see com.thruzero.domain.demo.model.GuestBookMessage
  * @see com.thruzero.domain.demo.service.GuestBookService
  */
-public class JpaGuestBookMessageDAO extends JpaGenericDAO<GuestBookMessage> implements GuestBookMessageDAO {
+public final class JpaGuestBookMessageDAO extends JpaGenericDAO<GuestBookMessage> implements GuestBookMessageDAO {
 
-  protected JpaGuestBookMessageDAO() {
+  /**
+   * Use {@link com.thruzero.domain.locator.DAOLocator DAOLocator} to access a particular DAO.
+   */
+  private JpaGuestBookMessageDAO() {
     super(GuestBookMessage.class);
   }
 

@@ -24,9 +24,12 @@ import com.thruzero.domain.jpa.dao.JpaGenericDAO;
  *
  * @author George Norman
  */
-public class JpaInputsDAO extends JpaGenericDAO<InputsModel> implements InputsDAO {
+public final class JpaInputsDAO extends JpaGenericDAO<InputsModel> implements InputsDAO {
 
-  protected JpaInputsDAO() {
+  /**
+   * Use {@link com.thruzero.domain.locator.DAOLocator DAOLocator} to access a particular DAO.
+   */
+  private JpaInputsDAO() {
     super(InputsModel.class);
   }
 
