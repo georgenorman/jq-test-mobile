@@ -11,6 +11,22 @@
       </p>
     </section>
 
+    <section name="Project Setup">
+      Here are some configuration settings that may differ from environment to environment:
+      <ol>
+        <li><b>jqtestmobile_config_dir_path_env</b>: If web.xml is configured to use an environment variable to locate the config file,
+          then the "jqtestmobile_config_dir_path_env" environment variable will need to be defined. It's the full path to
+          the config directory (e.g., "/home/deploys/jq-test-mobile/config"). Each environment can have custom configurations.
+        </li>
+        <li><b>config-environment.xml</b>: Within the config directory, the config-environment.xml file may define custom values
+          for its local environment. For example, if the DSC file-system persistence component is used, then the "parentStorePath"
+          will need to be defined. This is the path to the parent directory for the data store. For example, the demo app comes with a
+          "demo-data-store" directory. If this is placed in "/home/deploys/jq-test-mobile", then the "parentStorePath" will should
+          be set to "/home/deploys/jq-test-mobile".
+        </li>
+      </ol>
+    </section>
+
     <section name="Eclipse Setup">
         Here are some things that are not automatically configured for jq-test-mobile-war, when importing the poms into Eclipse
         [TODO-p1(george) - this may be an issue with my version of Eclipse and default settings]:
