@@ -38,8 +38,6 @@ public class SimplePanelBean extends AbstractDemoPageBean {
   private static final Class<InfoNodeService> SERVICE_CLASS = InfoNodeService.class;
 
   private DynamicPanelHelper dynamicPanelHelper = new DynamicPanelHelper();
-  private NotificationPanelHelper topNotificationPanelHelper = new NotificationPanelHelper("This is a test of p:notificationBar at the top.");
-  private NotificationPanelHelper bottomNotificationPanelHelper = new NotificationPanelHelper("This is a test of p:notificationBar at the bottom.");
 
   // ----------------------------------------------------
   // DynamicPanelHelper
@@ -93,13 +91,5 @@ public class SimplePanelBean extends AbstractDemoPageBean {
 
   public DynamicPanelHelper getDynamicPanelHelper() {
     return dynamicPanelHelper;
-  }
-
-  public NotificationPanelHelper getTopNotificationPanelHelper() {
-    return topNotificationPanelHelper;
-  }
-
-  public NotificationPanelHelper getBottomNotificationPanelHelper() {
-    return bottomNotificationPanelHelper;
   }
 }
