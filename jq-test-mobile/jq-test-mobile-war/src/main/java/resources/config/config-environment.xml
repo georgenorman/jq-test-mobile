@@ -34,6 +34,9 @@
 
     <!-- hibernate config file name -->
     <entry key="hibernateConfigFileName" value="hibernate.cfg-DEV.xml" />
+
+    <!-- JPA persistence-unit.name -->
+    <entry key="jpaPersistenceUnitName" value="jq-test-mobile-domain-manager" />
   </section>
 
 </configuration>

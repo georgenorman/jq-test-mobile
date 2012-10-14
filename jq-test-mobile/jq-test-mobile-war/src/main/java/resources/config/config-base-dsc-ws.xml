@@ -86,7 +86,7 @@
 
   <!-- Application-specific JPA settings -->
   <section name="com.thruzero.domain.jpa.transaction.JpaDatabaseTransactionMgr">
-    <entry key="persistence-unit.name" value="jq-test-mobile-domain-manager" />
+    <entry key="persistence-unit.name" value="[environment]{jpaPersistenceUnitName}" />
 
     <entry key="javax.persistence.jdbc.user" value="[environment]{jdbcUser}" />
     <entry key="javax.persistence.jdbc.password" value="[environment]{jdbcPassword}" />

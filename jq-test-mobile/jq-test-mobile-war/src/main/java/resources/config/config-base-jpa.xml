@@ -97,7 +97,7 @@
 
   <!-- Application-specific JPA settings -->
   <section name="com.thruzero.domain.jpa.transaction.JpaDatabaseTransactionMgr">
-    <entry key="persistence-unit.name" value="jq-test-mobile-domain-manager" />
+    <entry key="persistence-unit.name" value="[environment]{jpaPersistenceUnitName}" />
 
     <entry key="javax.persistence.jdbc.user" value="[environment]{jdbcUser}" />
     <entry key="javax.persistence.jdbc.password" value="[environment]{jdbcPassword}" />
@@ -108,18 +108,20 @@
     <entry key="hibernate.show_sql" value="false" />
     <entry key="hibernate.format_sql" value="false" />
 
+    <!-- http://stackoverflow.com/questions/730827/hibernate-c3p0-mysql-broken-pipe -->
     <entry key="hibernate.transaction.auto_close_session" value="false" />
 
-    <entry key="connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
+    <entry key="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
     <entry key="hibernate.c3p0.min_size" value="1" />
     <entry key="hibernate.c3p0.max_size" value="25" />
     <entry key="hibernate.c3p0.acquire_increment" value="1" />
-    <entry key="hibernate.c3p0.idle_test_period" value="10" />
     <entry key="hibernate.c3p0.max_statements" value="0" />
     <entry key="hibernate.c3p0.timeout" value="60" />
     <entry key="hibernate.c3p0.preferredTestQuery" value="SELECT 1" />
     <entry key="hibernate.c3p0.testConnectionOnCheckout" value="true" />
     <entry key="hibernate.c3p0.maxConnectionAge" value="120" />
+    <entry key="hibernate.c3p0.validate " value="true" />
+    <entry key="hibernate.c3p0.idle_test_period " value="900" />
   </section>
 
 </configuration>
