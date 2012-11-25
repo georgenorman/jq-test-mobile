@@ -50,7 +50,7 @@ public class EscapeToolBean extends AbstractDemoPageBean {
 
   @PostConstruct
   public void initBean() {
-    initInfoDialog(new UrlBean("/apps/demo/escapeTool.jsf", true)); // TODO(george):p1  back URL should come from jsf page
+    initInfoDialog(new UrlBean("/apps/demo/escapeTool.jsf", true)); // TODO-p1(george) Back URL should come from jsf page
 
     escapedText = (String)FlashUtils.removeFlashAttribute();
   }

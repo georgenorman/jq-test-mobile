@@ -41,7 +41,7 @@ public class DscPanelsBean extends AbstractDemoPageBean {
   public void initBean() {
     DscInfoNodeService dscInfoNodeService = ServiceLocator.locate(DscInfoNodeService.class); // locate Data Store version
 
-    initInfoDialog(dscInfoNodeService, new UrlBean("/apps/demo/dscPanels.jsf", true)); // TODO(george):p1  back URL should come from jsf page
+    initInfoDialog(dscInfoNodeService, new UrlBean("/apps/demo/dscPanels.jsf", true)); // TODO-p1(george) Back URL should come from jsf page
   }
 
   public InfoNodeElement getMovies() {

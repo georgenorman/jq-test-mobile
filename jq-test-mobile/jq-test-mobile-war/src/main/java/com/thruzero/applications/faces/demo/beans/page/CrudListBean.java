@@ -164,7 +164,7 @@ public class CrudListBean extends AbstractDemoPageBean {
     if (!getInputsStateBean().isInitialized()) {
       InputsService inputsService = ServiceLocator.locate(SERVICE_CLASS);
 
-      // TODO-p1(george) need to add criteria/filter (in case there are hundreds of items). Also, support pagination.
+      // TODO-p1(george) Need to add criteria/filter (in case there are hundreds of items). Also, support pagination.
       List<InputsModel> inputModels = new ArrayList<InputsModel>(inputsService.getInputs());
 
       getInputsStateBean().init(inputModels, getCrudListUrl(), isReadOnly());

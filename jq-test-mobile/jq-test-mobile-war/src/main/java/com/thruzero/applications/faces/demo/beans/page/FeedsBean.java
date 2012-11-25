@@ -147,7 +147,7 @@ public class FeedsBean extends AbstractDemoPageBean {
   public void initBean() {
     InfoNodeService service = ServiceLocator.locate(SERVICE_CLASS);
 
-    initInfoDialog(service, new UrlBean("/apps/demo/feeds.jsf", true)); // TODO(george):p1  back URL should come from jsf page
+    initInfoDialog(service, new UrlBean("/apps/demo/feeds.jsf", true)); // TODO-p1(george) Back URL should come from jsf page
   }
 
   public List<SyndFeedWrapper> getFeeds() {

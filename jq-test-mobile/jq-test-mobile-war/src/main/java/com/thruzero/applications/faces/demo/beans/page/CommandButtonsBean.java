@@ -293,7 +293,7 @@ public class CommandButtonsBean extends AbstractDemoPageBean {
   public void initBean() {
     DscInfoNodeService dscInfoNodeService = ServiceLocator.locate(SERVICE_CLASS); // locate Data Store version
 
-    initInfoDialog(dscInfoNodeService, new UrlBean(LANDING_PAGE, true)); // TODO(george):p1 The back URL should come from jsf page
+    initInfoDialog(dscInfoNodeService, new UrlBean(LANDING_PAGE, true)); // TODO-p1(george) The back URL should come from jsf page
 
     CommandFlashPayload flashPayload = CommandFlashPayload.ensureFlashPayload();
     simpleNotificationModel = (flashPayload.getSimpleNotificationModel() == null) ? new SimpleNotificationModel() : flashPayload.getSimpleNotificationModel();

@@ -40,7 +40,7 @@ public final class InputsService implements Service, SimpleInfoProvider {
   private InputsService() {
   }
 
-  //TODO-p1(george) need to add criteria/filter (in case there are hundreds of items). Also, support pagination.
+  //TODO-p1(george) Need to add criteria/filter (in case there are hundreds of items). Also, support pagination.
   public Collection<? extends InputsModel> getInputs() {
     Collection<? extends InputsModel> result = inputsDAO.getAll();
 

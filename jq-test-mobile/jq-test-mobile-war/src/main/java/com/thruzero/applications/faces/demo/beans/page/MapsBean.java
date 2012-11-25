@@ -49,7 +49,7 @@ public class MapsBean extends AbstractDemoPageBean {
   public void initBean() {
     InfoNodeService infoNodeService = ServiceLocator.locate(SERVICE_CLASS);
 
-    initInfoDialog(infoNodeService, new UrlBean("/apps/demo/maps.jsf", true)); // TODO(george):p1  back URL should come from jsf page
+    initInfoDialog(infoNodeService, new UrlBean("/apps/demo/maps.jsf", true)); // TODO-p1(george) Back URL should come from jsf page
   }
 
   public String getSelectedCoordinateName() {
