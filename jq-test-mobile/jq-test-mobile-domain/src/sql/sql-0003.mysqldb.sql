@@ -226,16 +226,16 @@ INSERT INTO testy_schema.GUEST_BOOK_MESSAGE VALUES (1002, 'EARN $1000 AN HOUR ON
 
 -- Sample Registered Users (passwords are d1lb3rt, d0gb3rt, w@lly and s@lly).
 INSERT INTO testy_schema.USER_DETAILS VALUES (1000, 'Dilbert', '', 'Adams', 'dilbert@thruzero.com', '', '', '(555) 555-5555', null, null);
-INSERT INTO testy_schema.REGISTERED_USER VALUES (1000, 'dilbert', 'fb5a4dff834b510cfc40c898794d2246', '', 0, 0, null, 'A', 1000);
+INSERT INTO testy_schema.REGISTERED_USER VALUES (1000, 'dilbert', 'fb5a4dff834b510cfc40c898794d2246', '', 0, 0, null, 'A', 1000, '<db-info><context>dilbert</context></db-info>');
 
 INSERT INTO testy_schema.USER_DETAILS VALUES (1001, 'Dogbert', '', 'Adams', 'dogbert@thruzero.com', '', '', '(555) 555-5555', null, null);
-INSERT INTO testy_schema.REGISTERED_USER VALUES (1001, 'dogbert', 'c153aa8262a280cc6c6fea2672fd2c36', '', 0, 0, null, 'A', 1001);
+INSERT INTO testy_schema.REGISTERED_USER VALUES (1001, 'dogbert', 'c153aa8262a280cc6c6fea2672fd2c36', '', 0, 0, null, 'A', 1001, '<db-info><context>dogbert</context></db-info>');
 
 INSERT INTO testy_schema.USER_DETAILS VALUES (1002, 'Wally', '', 'Adams', 'wally@thruzero.com', '', '', '(555) 555-5555', null, null);
-INSERT INTO testy_schema.REGISTERED_USER VALUES (1002, 'wally', 'cbbafd058b5bab01164e40b95a352435', '', 0, 0, null, 'A', 1002);
+INSERT INTO testy_schema.REGISTERED_USER VALUES (1002, 'wally', 'cbbafd058b5bab01164e40b95a352435', '', 0, 0, null, 'A', 1002, '<db-info><context>wally</context></db-info>');
 
 INSERT INTO testy_schema.USER_DETAILS VALUES (1003, 'Sally', '', 'Adams', 'sally@thruzero.com', '', '', '(555) 555-5555', null, null);
-INSERT INTO testy_schema.REGISTERED_USER VALUES (1003, 'sally', '33d51e033c793b1e1a4bbfa3161da7af', '', 0, 0, null, 'A', 1003);
+INSERT INTO testy_schema.REGISTERED_USER VALUES (1003, 'sally', '33d51e033c793b1e1a4bbfa3161da7af', '', 0, 0, null, 'A', 1003, '<db-info><context>sally</context></db-info>');
 
 -- Permissions
 INSERT INTO testy_schema.PERMISSION VALUES (101, 'demoSecure2', 'view,edit,create', 'User can view, edit and create items on the "/apps/demo/secure/secure2.jsf" page.');
