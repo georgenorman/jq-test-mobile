@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<movies>
-  <movie id="1" title="Everglades" image="/images/apps/demo/movies/scenic/CocoaIsles.png" disabled="false">
+<notes>
+  <note id="1" title="Everglades" image="/images/apps/demo/movies/scenic/CocoaIsles.png" disabled="false">
+    <![CDATA[
       At the place where we put our boat in the lake, the water was too shallow to use our motor.
       So we paddled our boat out from shore, moving in the direction of the flamingoes.
       However, as we expected, the flamingoes saw us.  Unlike their dwarfed duck companions,
@@ -9,25 +10,30 @@
       birds  appear as a duet of slow skaters moving in rhythm  to some secret waltz.
       They accelerated as they moved along and when the needed speed was attained, they gracefully
       lifted themselves from the water and soon were flying, legs stretched out behind.
-      ${break}${break}
-    - (c) Edward W. Norman - Autobiography
-  </movie>
-  <movie id="2" title="Flight Training" image="/images/apps/demo/movies/scenic/GoldenGate.png" disabled="false">
+      <br/><br/>
+      <i>&#xa9; Edward W. Norman - Autobiography</i>
+    ]]>
+  </note>
+  <note id="2" title="Flight Training" image="/images/apps/demo/movies/scenic/GoldenGate.png" disabled="false">
+    <![CDATA[
     We were always warned never to spin the prop in starting our engines when there was no one in the cockpit at the controls.
     One afternoon when I went to fly the plane that had been assigned to me I learned that one of the mechanics had cranked up my plane with no one in the cockpit.
     The plane leaped the chocks and would have gone off down the taxi strip on its own; but he grabbed the end of the wing.
     The plane began going around in circles, with the mechanic hanging on.  Round and around it went until my plane ended up with
     its nose jammed into the wall of the hanger.  I was assigned another plane.
-      ${break}${break}
-    - (c) Edward W. Norman - Autobiography
-  </movie>
-  <movie id="3" title="Clouds Race Across the Sky" image="/images/apps/demo/movies/scenic/Yosemite.png" disabled="false">
+    <br/><br/>
+    <i>&#xa9; Edward W. Norman - Autobiography</i>
+    ]]>
+  </note>
+  <note id="3" title="Clouds Race Across the Sky" image="/images/apps/demo/movies/scenic/Yosemite.png" disabled="false">
+    <![CDATA[
     We traveled through heavy fog for a while.  But then we found ourselves in the sun, flying over a region of evergreen trees.
     We landed at Goose Bay, Labrador. After our evening meal we resumed our journey.
     We flew over a cloud mass, broken here and there permitting a view of the sea below.
     It was near midnight when I saw the sun, a ball of fire sinking slowly into the sea.
     When the sun had disappeared, the clouds in the west glowed with reflecting fire.  Twilight remained.
-      ${break}${break}
-    - (c) Edward W. Norman - Autobiography
-  </movie>
-</movies>
+    <br/><br/>
+    <i>&#xa9; Edward W. Norman - Autobiography</i>
+    ]]>
+  </note>
+</notes>

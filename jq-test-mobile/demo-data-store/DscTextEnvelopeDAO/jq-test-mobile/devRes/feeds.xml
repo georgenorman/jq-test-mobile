@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feeds id="feed1">
+
+  <carouselPanelSet id="rssFeedSet" paginate="100">
+    <rssFeedPanel id="main010" title="Yahoo News: Internet" titleLink="http://www.yahoo.com/" size="12" refreshRate="1" includeImage="true">http://rss.news.yahoo.com/rss/internet</rssFeedPanel>
+    <rssFeedPanel id="main011" title="Slashdot" titleLink="http://slashdot.org/" size="5" refreshRate="2">http://rss.slashdot.org/Slashdot/slashdot/to</rssFeedPanel>
+    <rssFeedPanel id="main012" title="Android Tablet News" titleLink="http://www.androidtablets.net/" size="5" refreshRate="8">http://feeds.feedburner.com/androidtablets</rssFeedPanel>
+    <rssFeedPanel id="main013" title="TheServerSide.com: News" titleLink="http://www.theserverside.com/" size="5" refreshRate="4">http://feeds.pheedo.com/techtarget/tsscom/home</rssFeedPanel>
+  </carouselPanelSet>
+
+</feeds>

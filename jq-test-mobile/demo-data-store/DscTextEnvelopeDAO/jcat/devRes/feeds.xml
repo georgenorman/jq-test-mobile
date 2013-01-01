@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feeds>
-  <rss id="1" title="Yahoo News: Internet" titleLink="http://www.yahoo.com/" size="5">http://rss.news.yahoo.com/rss/internet</rss>
-  <rss id="2" title="Slashdot" titleLink="http://slashdot.org/" size="5">http://rss.slashdot.org/Slashdot/slashdot/to</rss>
-  <rss id="3" title="Android Tablet News" titleLink="http://www.androidtablets.net/" size="5">http://feeds.feedburner.com/androidtablets</rss>
-  <rss id="4" title="TheServerSide.com: News" titleLink="http://www.theserverside.com/" size="5" stripTags="true">http://feeds.pheedo.com/techtarget/tsscom/home</rss>
-</feeds>

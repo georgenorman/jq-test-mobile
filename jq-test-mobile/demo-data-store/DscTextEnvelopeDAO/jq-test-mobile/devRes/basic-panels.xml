@@ -5,6 +5,8 @@
     <title>We Try Our Hand at Making Maple Syrup</title>
     <footer>This panel is broken on resize</footer>
     <contents>
+    <![CDATA[
+      <p class="sea">
       On the hillside behind our house was a small building.
       I don't know what its original purpose was.
       One Spring when I was a freshman in high school a group of us got permission to use the building for making maple syrup.
@@ -14,7 +16,8 @@
       From the tree came a thin slow drip of sap dropping into each can.
       Each morning before school, a couple of us would collect the Maple sap.
       We dumped this into the sterilizer.
-      ${break}${break}
+      </p>
+      <p class="sea">
       A steady fire was maintained under the liquid until it was cooked down into syrup.
       It was a long drawn-out process because we kept adding fresh sap each morning.
       Another task was to saw and split wood to burn under the sterilizer.
@@ -22,12 +25,16 @@
       Then we used a "buck" saw to cut them up into manageable lengths to haul them  to the syrup house.
       It was a rather  primitive  method  of  syrup  making;  but it worked.
       We made many gallons of good maple syrup over a period of two or three years.
-      ${break}${break}
+      </p>
+      <p class="sea">
       One day when I got home from school  I learned that our syrup house had burned to the ground.
       We decided that the bottom had burned out of the old sterilizer and the fire had dropped to the
       floor and soon spread to the entire building.  That ended our syrup business.
-      ${break}${break}
-      - (c) Edward W. Norman - Autobiography
+      </p>
+      <p>
+      <i>&#xa9; Edward W. Norman - Autobiography</i>
+      </p>
+    ]]>
     </contents>
   </dynamicPanel>
 </panels>

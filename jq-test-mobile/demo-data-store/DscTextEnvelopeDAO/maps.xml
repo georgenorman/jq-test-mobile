@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<maps>
-  <coordinate id="1" latitude="28.284309" longitude="-80.606775" zoom="19">Cocoa Beach</coordinate>
-  <coordinate id="2" latitude="37.78659" longitude="-122.38915" zoom="15">San Francisco</coordinate>
-  <coordinate id="3" latitude="37.62" longitude="-122.38" zoom="15">SFO</coordinate>
-  <coordinate id="3" latitude="41.866365" longitude="-87.60674" zoom="15">Chicago</coordinate>
-</maps>
