@@ -16,6 +16,8 @@
 package com.thruzero.applications.faces.demo.beans.page;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import com.thruzero.applications.faces.demo.utils.DscUtils;
 import com.thruzero.common.core.infonode.InfoNodeElement;
@@ -30,8 +32,8 @@ import com.thruzero.domain.service.InfoNodeService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="simplePanelBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="simplePanelBean")
+@RequestScoped
 public class SimplePanelBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 
@@ -49,7 +51,7 @@ public class SimplePanelBean extends AbstractDemoPageBean {
     public InfoNodeElement getPanelNode() {
       if ( panelNode == null ) {
         InfoNodeService infoNodeService = ServiceLocator.locate(SERVICE_CLASS);
-        EntityPath nodePath = new EntityPath("/jcat/devRes/", "basic-panels.xml");
+        EntityPath nodePath = new EntityPath("/jq-test-mobile/devRes/", "basic-panels.xml");
         InfoNodeElement rootNode = infoNodeService.getInfoNode(nodePath);
 
         // print some diagnostic info if DscInfoNodeService is used

@@ -35,6 +35,7 @@
   <h:panelGroup rendered="#{not empty footerText}">
     <div data-theme="#{themeStateBean.model.pageFooterDataTheme}" data-role="footer" data-position="fixed">
       <span style="font-size: smaller">#{footerText}</span>
+    <div style="font-size:smaller; text-align:right;">Render Time: #{timerBean.elapsedTime}</div>
     </div>
   </h:panelGroup>
 

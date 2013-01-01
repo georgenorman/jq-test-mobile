@@ -18,6 +18,9 @@ package com.thruzero.applications.faces.demo.beans.page;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 import org.apache.commons.lang3.StringUtils;
 import org.jdom.Attribute;
 import org.jdom.JDOMException;
@@ -34,8 +37,8 @@ import com.thruzero.domain.dsc.service.DscInfoNodeService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="dashboardBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="dashboardBean")
+@RequestScoped
 public class DashboardBean implements Serializable  {
   private static final long serialVersionUID = 1L;
 
@@ -45,10 +48,11 @@ public class DashboardBean implements Serializable  {
 
   }
 
+  // TODO-p0(george) Replace with MenuBar (see jcat3)
   public List<InfoNodeElement> getDashboard() {
     if (dashboardPanels == null) {
       DscInfoNodeService dscInfoNodeService = ServiceLocator.locate(DscInfoNodeService.class); // locate Data Store version
-      EntityPath nodePath = new EntityPath("dashboard.xml");
+      EntityPath nodePath = new EntityPath("/jq-test-mobile/", "dashboard.xml");
       InfoNodeElement dashboard = dscInfoNodeService.getInfoNode(nodePath);
 
       // print some diagnostic info if DscInfoNodeService is used
@@ -60,7 +64,7 @@ public class DashboardBean implements Serializable  {
         List<InfoNodeElement> allPanels = (List<InfoNodeElement>)dashboard.findAll("//panel");
         dashboardPanels = allPanels;
 
-        // make adjustments for the mobile implementation
+        // make adjustments for the mobile implementation TODO-p0(george) Eliminate the need for this [possibly have a local and remove URL definition in dynamic content - or support substitution vars]
         @SuppressWarnings("unchecked")
         List<InfoNodeElement> allLinks = (List<InfoNodeElement>)dashboard.findAll("//link");
         for (InfoNodeElement link : allLinks) {

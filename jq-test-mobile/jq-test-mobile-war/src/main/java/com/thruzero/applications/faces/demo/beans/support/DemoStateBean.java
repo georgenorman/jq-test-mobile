@@ -18,6 +18,9 @@ package com.thruzero.applications.faces.demo.beans.support;
 import java.io.Serializable;
 import java.util.Locale;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import org.apache.commons.lang3.StringUtils;
 
 import com.thruzero.common.jsf.utils.FacesUtils;
@@ -27,8 +30,8 @@ import com.thruzero.common.jsf.utils.FacesUtils;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="demoStateBean")
-@javax.faces.bean.SessionScoped
+@ManagedBean(name="demoStateBean")
+@SessionScoped
 public class DemoStateBean implements Serializable {
   private static final long serialVersionUID = 1L;
 

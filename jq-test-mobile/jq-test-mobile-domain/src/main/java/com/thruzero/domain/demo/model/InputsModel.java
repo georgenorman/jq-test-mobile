@@ -18,7 +18,7 @@ package com.thruzero.domain.demo.model;
 import com.thruzero.domain.store.AbstractPersistent;
 
 /**
- * Represents the data collected by the inputs page (which tests the various input types).
+ * Represents the data collected by the inputs demo/test page (which tests the various input types).
  *
  * @author George Norman
  */

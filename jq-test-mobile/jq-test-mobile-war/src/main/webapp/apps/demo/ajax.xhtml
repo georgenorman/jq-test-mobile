@@ -67,22 +67,22 @@
         <hr class="simple-divider"/>
 
         <div data-role="controlgroup" data-type="horizontal">
-          <tzh:outputLink data-icon="star" data-role="button" value="#" data-iconpos="notext" style="padding:8px;" styleClass="#{ajaxBean.ajaxStateBean.selectedMovieId == 1 ? 'ui-btn-active' : ''}" id="id1">
-             <f:ajax event="click" render="showSelectedMovie" listener="#{ajaxBean.showSelectedMovieListener}"/>
+          <tzh:outputLink data-icon="star" data-role="button" value="#" data-iconpos="notext" style="padding:8px;" styleClass="#{ajaxBean.ajaxStateBean.selectedNoteId == 1 ? 'ui-btn-active' : ''}" id="id1">
+             <f:ajax event="click" render="showSelectedNote" listener="#{ajaxBean.showSelectedNoteListener}"/>
           </tzh:outputLink>
-          <tzh:outputLink data-icon="grid" data-role="button" value="#" data-iconpos="notext" style="padding:8px;" styleClass="#{ajaxBean.ajaxStateBean.selectedMovieId == 2 ? 'ui-btn-active' : ''}" id="id2">
-             <f:ajax event="click" render="showSelectedMovie id1" listener="#{ajaxBean.showSelectedMovieListener}"/>
+          <tzh:outputLink data-icon="grid" data-role="button" value="#" data-iconpos="notext" style="padding:8px;" styleClass="#{ajaxBean.ajaxStateBean.selectedNoteId == 2 ? 'ui-btn-active' : ''}" id="id2">
+             <f:ajax event="click" render="showSelectedNote id1" listener="#{ajaxBean.showSelectedNoteListener}"/>
           </tzh:outputLink>
-          <tzh:outputLink data-icon="gear" data-role="button" value="#" data-iconpos="notext" style="padding:8px;" styleClass="#{ajaxBean.ajaxStateBean.selectedMovieId == 3 ? 'ui-btn-active' : ''}" id="id3">
-             <f:ajax event="click" render="showSelectedMovie" listener="#{ajaxBean.showSelectedMovieListener}"/>
+          <tzh:outputLink data-icon="gear" data-role="button" value="#" data-iconpos="notext" style="padding:8px;" styleClass="#{ajaxBean.ajaxStateBean.selectedNoteId == 3 ? 'ui-btn-active' : ''}" id="id3">
+             <f:ajax event="click" render="showSelectedNote" listener="#{ajaxBean.showSelectedNoteListener}"/>
           </tzh:outputLink>
-          <tzh:outputLink data-icon="alert" data-role="button" value="#" data-iconpos="notext" style="padding:8px;" styleClass="#{ajaxBean.ajaxStateBean.selectedMovieId == 4 ? 'ui-btn-active' : ''}" id="id4">
-             <f:ajax event="click" render="showSelectedMovie" listener="#{ajaxBean.showSelectedMovieListener}"/>
+          <tzh:outputLink data-icon="alert" data-role="button" value="#" data-iconpos="notext" style="padding:8px;" styleClass="#{ajaxBean.ajaxStateBean.selectedNoteId == 4 ? 'ui-btn-active' : ''}" id="id4">
+             <f:ajax event="click" render="showSelectedNote" listener="#{ajaxBean.showSelectedNoteListener}"/>
           </tzh:outputLink>
           <span style="color:red"> * BROKEN</span>
         </div>
         <div class="simple-info-bar" style="margin-top:6px;">
-          <h:outputText id="showSelectedMovie" value="#{ajaxBean.selectedMovie}" escape="false" />
+          <h:outputText id="showSelectedNote" value="#{ajaxBean.selectedNote}" escape="false" />
         </div>
       </ui:define>
     </jqmb:basicPanel>

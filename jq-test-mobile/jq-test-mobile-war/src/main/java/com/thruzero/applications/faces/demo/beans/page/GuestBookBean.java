@@ -19,6 +19,8 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
 
 import com.thruzero.common.core.locator.ServiceLocator;
@@ -32,8 +34,8 @@ import com.thruzero.domain.demo.service.GuestBookService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="guestBookBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="guestBookBean")
+@RequestScoped
 public class GuestBookBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 

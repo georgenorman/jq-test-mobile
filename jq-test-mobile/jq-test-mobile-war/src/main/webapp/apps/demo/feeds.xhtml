@@ -54,14 +54,19 @@
   <!-- CONTENT -->
   <ui:define name="content">
     <div data-role="collapsible-set">
-      <ui:repeat value="#{feedsBean.feeds}" var="feed">
-        <jqmb:basicPanel headerText="#{feed.title} [#{feed.publishedDate}]" dataCollapsed="false" dataMini="true">
+      <ui:repeat value="#{rssFeedsBean.getFeedsList('feeds.main.RssFeeds')}" var="rssFeedPanel">
+        <jqmb:basicPanel headerText="#{rssFeedPanel.title} [#{rssFeedPanel.rssFeed.publishedDate}]" dataCollapsed="false" dataMini="true">
           <ui:define name="panelBody">
-            <ui:repeat value="#{feed.entries}" var="entry">
+            <ui:repeat value="#{rssFeedPanel.rssFeed.entries}" var="entry">
+              <div style="float:none; clear:both;">
               <a href="#{entry.link}" data-transition="slidefade"><h:outputText value="#{entry.title}" escape="false" style="font-size:smaller;" /></a>
               <p>
+                <h:panelGroup rendered="#{not empty entry.icon}">
+                  <img src="#{entry.icon}" style="float:left; margin:0 6px 6px 0;"/>
+                </h:panelGroup>
                 <h:outputText value="#{entry.description}" escape="false" styleClass="rss-content" />
               </p>
+              </div>
             </ui:repeat>
           </ui:define>
         </jqmb:basicPanel>

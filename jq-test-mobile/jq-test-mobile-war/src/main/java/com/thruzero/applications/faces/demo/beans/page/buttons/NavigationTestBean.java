@@ -1,5 +1,8 @@
 package com.thruzero.applications.faces.demo.beans.page.buttons;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 import org.apache.commons.lang3.StringUtils;
 
 import com.thruzero.applications.faces.demo.utils.DscUtils;
@@ -17,8 +20,8 @@ import com.thruzero.domain.dsc.service.DscInfoNodeService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="navigationTestBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="navigationTestBean")
+@RequestScoped
 public class NavigationTestBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 
@@ -51,17 +54,17 @@ public class NavigationTestBean extends AbstractDemoPageBean {
   private void ensureDataSegment() {
     if (dataSegment == null) {
       DscInfoNodeService dscInfoNodeService = ServiceLocator.locate(SERVICE_CLASS); // locate Data Store version
-      EntityPath nodePath = new EntityPath("/jcat/devRes/", "movies.xml");
-      InfoNodeElement movies = dscInfoNodeService.getInfoNode(nodePath);
+      EntityPath nodePath = new EntityPath("/jq-test-mobile/devRes/", "notes.xml");
+      InfoNodeElement notes = dscInfoNodeService.getInfoNode(nodePath);
 
-      DscUtils.assertValidInfoNode(movies, "movies", dscInfoNodeService, nodePath);
+      DscUtils.assertValidInfoNode(notes, "notes", dscInfoNodeService, nodePath);
 
       String ds = FacesUtils.getRequest().getParameter(DATA_SEGMENT_REQUEST_PARAMETER_KEY);
 
       if (StringUtils.isNotEmpty(ds)) {
         try {
-          movies.enableRootNode();
-          dataSegment = (InfoNodeElement)movies.find("//movie[@id='"+ds+"']");
+          notes.enableRootNode();
+          dataSegment = (InfoNodeElement)notes.find("//note[@id='"+ds+"']");
         } catch (Exception e) {
           // ignore
         }
@@ -69,7 +72,7 @@ public class NavigationTestBean extends AbstractDemoPageBean {
 
       if (dataSegment == null) {
         TokenStreamInfoNodeBuilder builder = TokenStreamInfoNodeBuilder.WITH_ROOT_NODE;
-        dataSegment = builder.buildInfoNode("movie[@id='err', @title='ERROR', @image='/images/common/icons/error.png']=invalid ds ID.");
+        dataSegment = builder.buildInfoNode("note[@id='err', @title='ERROR', @image='/images/common/icons/error.png']=invalid ds ID.");
       }
     }
   }

@@ -32,6 +32,8 @@
 
   <!-- DAO Registry - DAOs can be registered here (and will be combined with any other "com.thruzero.domain.dao.DAO" sections included -->
   <section name="com.thruzero.domain.dao.DAO">
+    <!-- entry key="com.thruzero.domain.dao.TextEnvelopeDAO" value="com.thruzero.domain.dsc.dao.DscTextEnvelopeDAO" /-->
+
     <!-- JPA -->
     <entry key="com.thruzero.domain.dao.TextEnvelopeDAO" value="com.thruzero.domain.jpa.dao.JpaTextEnvelopeDAO" />
     <entry key="com.thruzero.domain.dao.PreferenceDAO" value="com.thruzero.domain.jpa.dao.JpaPreferenceDAO" />

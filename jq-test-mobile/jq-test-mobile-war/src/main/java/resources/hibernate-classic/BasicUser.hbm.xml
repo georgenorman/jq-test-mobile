@@ -6,7 +6,8 @@
    - Example mapping file. Copy this file to the application's domain module, then rename the table and columns
    - to match the actual table and column names (this file should reside in the application's domain jar).
  -->
-<hibernate-mapping package="com.thruzero.auth.model.impl" default-access="field">
+<!-- NOTE: The default-access attribute was changed from "field" to "property", so BasicUserDataStoreInfo could be initialized from setRawDataStoreInfo() -->
+<hibernate-mapping package="com.thruzero.auth.model.impl" default-access="property">
 
   <class name="BasicUser" table="REGISTERED_USER">
 

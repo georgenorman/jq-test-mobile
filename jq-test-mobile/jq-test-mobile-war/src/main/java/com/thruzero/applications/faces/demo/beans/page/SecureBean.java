@@ -18,6 +18,9 @@ package com.thruzero.applications.faces.demo.beans.page;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
@@ -30,8 +33,8 @@ import com.thruzero.auth.model.UserPermission;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="secureBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="secureBean")
+@RequestScoped
 public class SecureBean implements Serializable {
   private static final long serialVersionUID = 1L;
 

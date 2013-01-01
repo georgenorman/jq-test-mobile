@@ -30,9 +30,11 @@
     <entry key="com.thruzero.domain.service.PreferenceService" value="com.thruzero.domain.service.impl.GenericPreferenceService" />
     <entry key="com.thruzero.domain.service.SettingService" value="com.thruzero.domain.service.impl.GenericSettingService" />
     <entry key="com.thruzero.domain.service.MailService" value="com.thruzero.domain.service.impl.SimpleMailService" />
-
-    <!-- common domain services -->
     <entry key="com.thruzero.auth.service.UserService" value="com.thruzero.auth.service.impl.GenericUserService" />
+    <entry key="com.thruzero.domain.service.RssFeedService" value="com.thruzero.domain.service.impl.SimpleRssFeedService" />
+
+    <!-- For Remote-InfoNodeService -->
+    <entry key="com.thruzero.domain.service.impl.HttpInfoNodeService" value="com.thruzero.domain.service.impl.HttpInfoNodeService" />
 
     <!-- demo-specific services -->
     <entry key="com.thruzero.domain.demo.service.GuestBookService" value="com.thruzero.domain.demo.service.GuestBookService" />
@@ -78,10 +80,16 @@
 
   <section name="com.thruzero.common.core.provider.Provider">
     <entry key="com.thruzero.common.core.provider.ResourceProvider" value="com.thruzero.applications.faces.demo.provider.DemoStateBeanResourceProvider" />
+    <entry key="com.thruzero.common.jsf.support.provider.RootNodeCacheBuilderProvider" value="com.thruzero.common.jsf.support.provider.XmlRootNodeCacheBuilderProvider" />
+    <entry key="com.thruzero.domain.provider.DataStoreInfoProvider" value="com.thruzero.applications.faces.demo.provider.DemoDataStoreInfoProvider" />
   </section>
 
   <section name="com.thruzero.common.core.provider.ResourceProvider">
     <entry key="resourceBaseName" value="resources.bundle.resources" /> <!-- value must match <resource-bundle><base-name> in faces-config.xml -->
+  </section>
+
+  <section name="com.thruzero.domain.provider.DataStoreInfoProvider">
+    <entry key="defaultUserName" value="jq-test-mobile" />
   </section>
 
   <!-- *************************************************************

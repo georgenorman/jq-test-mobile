@@ -15,6 +15,9 @@
  */
 package com.thruzero.applications.faces.demo.beans.page;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 import com.thruzero.common.jsf.support.beans.page.AbstractDemoPageBean;
 
 /**
@@ -23,8 +26,8 @@ import com.thruzero.common.jsf.support.beans.page.AbstractDemoPageBean;
  * @author George Norman
  * @see com.thruzero.applications.faces.demo.beans.page.buttons.NavigationTestBean
  */
-@javax.faces.bean.ManagedBean(name="navigationButtonsBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="navigationButtonsBean")
+@RequestScoped
 public class NavigationButtonsBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 

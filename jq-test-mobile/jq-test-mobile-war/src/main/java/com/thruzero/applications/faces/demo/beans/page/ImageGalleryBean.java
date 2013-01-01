@@ -20,6 +20,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import org.jdom.JDOMException;
 
@@ -37,8 +39,8 @@ import com.thruzero.domain.service.InfoNodeService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="imageGalleryBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="imageGalleryBean")
+@RequestScoped
 public class ImageGalleryBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 

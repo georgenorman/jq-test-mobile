@@ -20,6 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import org.apache.commons.lang3.StringUtils;
@@ -35,8 +39,8 @@ import com.thruzero.domain.demo.service.InputsService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="crudListBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="crudListBean")
+@RequestScoped
 public class CrudListBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 
@@ -44,15 +48,15 @@ public class CrudListBean extends AbstractDemoPageBean {
 
   private BackButtonCallback backButtonCallback;
 
-  @javax.faces.bean.ManagedProperty(value="#{inputsStateBean}")
+  @ManagedProperty(value="#{inputsStateBean}")
   private InputsStateBean inputsStateBean;
 
   // ------------------------------------------------------
   // InputsStateBean
   // ------------------------------------------------------
 
-  @javax.faces.bean.ManagedBean(name="inputsStateBean")
-  @javax.faces.bean.SessionScoped
+  @ManagedBean(name="inputsStateBean")
+  @SessionScoped
   public static class InputsStateBean implements Serializable {
     private static final long serialVersionUID = 1L;
 

@@ -95,3 +95,9 @@
   width: 300px;
   float: right;
 }
+
+.sea:first-letter {
+  font-size:170%;
+  color:#936;
+}
+

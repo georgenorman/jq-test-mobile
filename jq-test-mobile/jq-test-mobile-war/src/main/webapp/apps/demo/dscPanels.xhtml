@@ -47,11 +47,11 @@
   <!-- CONTENT -->
   <ui:define name="content">
 
-    <ui:repeat value="#{dscPanelsBean.movies.children}" var="movie" varStatus="status">
-      <jqmb:basicPanel headerText="#{movie.find('@title').value}" dataCollapsed="#{status.index > 0}" dataMini="true">
+    <ui:repeat value="#{dscPanelsBean.notes.children}" var="note" varStatus="status">
+      <jqmb:basicPanel headerText="#{note.find('@title').value}" dataCollapsed="#{status.index > 0}" dataMini="true">
         <ui:define name="panelBody">
-          <h:graphicImage value="#{movie.find('@image').value}" style="float:left; height:100px; margin-right:12px;" />
-          <h:outputText value="#{movie.valueTransformer.asRichText}" escape="false" />
+          <h:graphicImage value="#{note.find('@image').value}" style="float:left; height:100px; margin-right:12px;" />
+          <h:outputText value="#{note.text}" escape="false" />
         </ui:define>
       </jqmb:basicPanel>
     </ui:repeat>

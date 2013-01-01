@@ -18,6 +18,9 @@ package com.thruzero.applications.faces.demo.beans.page.crud;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -36,8 +39,8 @@ import com.thruzero.domain.demo.service.InputsService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="crudInputsViewerBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="crudInputsViewerBean")
+@RequestScoped
 public class CrudInputsViewerBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 
@@ -57,7 +60,7 @@ public class CrudInputsViewerBean extends AbstractDemoPageBean {
 
   private DeleteActionHandler deleteActionHandler = new DeleteActionHandler();
 
-  @javax.faces.bean.ManagedProperty(value="#{inputsStateBean}")
+  @ManagedProperty(value="#{inputsStateBean}")
   private InputsStateBean inputsStateBean;
 
   // ------------------------------------------------------

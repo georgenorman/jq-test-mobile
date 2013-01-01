@@ -49,7 +49,7 @@
       <jqmb:basicPanel headerText="#{navigationTestBean.dataSegment.find('@title').value}" dataCollapsed="#{status.index > 0}" dataMini="true">
         <ui:define name="panelBody">
           <h:graphicImage value="#{navigationTestBean.dataSegment.find('@image').value}" style="float:left; margin-right:12px;" />
-          <h:outputText value="#{navigationTestBean.dataSegment.valueTransformer.asRichText}" escape="false" />
+          <h:outputText value="#{navigationTestBean.dataSegment.text}" escape="false" />
         </ui:define>
       </jqmb:basicPanel>
   </ui:define>

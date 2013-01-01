@@ -16,6 +16,8 @@
 package com.thruzero.applications.faces.demo.beans.page;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
@@ -31,8 +33,8 @@ import com.thruzero.common.jsf.utils.FlashUtils;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name = "escapeToolBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name = "escapeToolBean")
+@RequestScoped
 public class EscapeToolBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 

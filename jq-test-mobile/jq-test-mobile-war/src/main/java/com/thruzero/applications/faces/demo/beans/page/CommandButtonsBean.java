@@ -18,6 +18,8 @@ package com.thruzero.applications.faces.demo.beans.page;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import com.thruzero.applications.faces.demo.beans.page.CommandButtonsBean.InputCommandsTestHelper.FormTestModel;
 import com.thruzero.applications.faces.support.model.SimpleNotificationModel;
@@ -44,8 +46,8 @@ import com.thruzero.domain.dsc.service.DscInfoNodeService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="commandButtonsBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="commandButtonsBean")
+@RequestScoped
 public class CommandButtonsBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 

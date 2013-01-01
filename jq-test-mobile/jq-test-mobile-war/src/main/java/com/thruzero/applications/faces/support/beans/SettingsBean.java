@@ -20,6 +20,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.model.SelectItem;
 
 import com.thruzero.applications.faces.demo.beans.support.DemoLocaleSwitcherBean;
@@ -36,8 +39,8 @@ import com.thruzero.common.core.utils.StringUtilsExt;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="settingsBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="settingsBean")
+@RequestScoped
 public class SettingsBean implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -45,13 +48,13 @@ public class SettingsBean implements Serializable {
 
   private SimpleNotificationModel simpleNotificationModel;
 
-  @javax.faces.bean.ManagedProperty(value="#{demoStateBean}")
+  @ManagedProperty(value="#{demoStateBean}")
   private DemoStateBean demoStateBean;
 
-  @javax.faces.bean.ManagedProperty(value="#{themeStateBean}")
+  @ManagedProperty(value="#{themeStateBean}")
   private ThemeStateBean themeStateBean;
 
-  @javax.faces.bean.ManagedProperty(value="#{demoLocaleSwitcherBean}")
+  @ManagedProperty(value="#{demoLocaleSwitcherBean}")
   private DemoLocaleSwitcherBean demoLocaleSwitcherBean;
 
   @PostConstruct

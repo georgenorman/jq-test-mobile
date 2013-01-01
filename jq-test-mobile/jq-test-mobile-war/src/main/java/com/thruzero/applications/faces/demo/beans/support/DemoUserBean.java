@@ -15,6 +15,8 @@
  */
 package com.thruzero.applications.faces.demo.beans.support;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
 
 import org.apache.shiro.subject.Subject;
@@ -28,8 +30,8 @@ import com.thruzero.common.core.locator.ServiceLocator;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="demoUserBean")
-@javax.faces.bean.SessionScoped
+@ManagedBean(name="demoUserBean")
+@SessionScoped
 public class DemoUserBean extends UserBean {
   private static final long serialVersionUID = 1L;
 

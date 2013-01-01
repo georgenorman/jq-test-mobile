@@ -15,6 +15,10 @@
  */
 package com.thruzero.applications.faces.demo.beans.dialog;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+
 import com.thruzero.common.jsf.support.beans.BrandBean;
 import com.thruzero.common.jsf.support.beans.dialog.AbstractAboutApplicationBean;
 
@@ -23,12 +27,12 @@ import com.thruzero.common.jsf.support.beans.dialog.AbstractAboutApplicationBean
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name = "demoAboutApplicationBean")
-@javax.faces.bean.ApplicationScoped
+@ManagedBean(name = "demoAboutApplicationBean")
+@ApplicationScoped
 public class DemoAboutApplicationBean extends AbstractAboutApplicationBean {
   private static final long serialVersionUID = 1L;
 
-  @javax.faces.bean.ManagedProperty(value="#{brandBean}")
+  @ManagedProperty(value="#{brandBean}")
   private BrandBean brandBean;
 
   @Override

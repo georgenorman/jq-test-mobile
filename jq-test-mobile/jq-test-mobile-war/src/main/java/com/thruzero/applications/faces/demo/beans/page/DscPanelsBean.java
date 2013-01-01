@@ -16,6 +16,8 @@
 package com.thruzero.applications.faces.demo.beans.page;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import com.thruzero.applications.faces.demo.utils.DscUtils;
 import com.thruzero.common.core.infonode.InfoNodeElement;
@@ -30,12 +32,12 @@ import com.thruzero.domain.dsc.service.DscInfoNodeService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="dscPanelsBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="dscPanelsBean")
+@RequestScoped
 public class DscPanelsBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 
-  private InfoNodeElement movies;
+  private InfoNodeElement notes;
 
   @PostConstruct
   public void initBean() {
@@ -44,19 +46,19 @@ public class DscPanelsBean extends AbstractDemoPageBean {
     initInfoDialog(dscInfoNodeService, new UrlBean("/apps/demo/dscPanels.jsf", true)); // TODO-p1(george) Back URL should come from jsf page
   }
 
-  public InfoNodeElement getMovies() {
-    ensureMovies();
+  public InfoNodeElement getNotes() {
+    ensureNotes();
 
-    return movies;
+    return notes;
   }
 
-  private void ensureMovies() {
-    if (movies == null) {
+  private void ensureNotes() {
+    if (notes == null) {
       DscInfoNodeService dscInfoNodeService = ServiceLocator.locate(DscInfoNodeService.class); // locate Data Store version
-      EntityPath nodePath = new EntityPath("/jcat/devRes/", "movies.xml");
-      movies = dscInfoNodeService.getInfoNode(nodePath);
+      EntityPath nodePath = new EntityPath("/jq-test-mobile/devRes/", "notes.xml");
+      notes = dscInfoNodeService.getInfoNode(nodePath);
 
-      DscUtils.assertValidInfoNode(movies, "movies", dscInfoNodeService, nodePath);
+      DscUtils.assertValidInfoNode(notes, "notes", dscInfoNodeService, nodePath);
     }
   }
 }

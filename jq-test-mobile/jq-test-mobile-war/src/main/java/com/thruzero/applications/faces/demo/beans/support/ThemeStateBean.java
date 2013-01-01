@@ -17,6 +17,9 @@ package com.thruzero.applications.faces.demo.beans.support;
 
 import java.io.Serializable;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import com.thruzero.common.core.config.Config;
 import com.thruzero.common.core.locator.ConfigLocator;
 import com.thruzero.common.core.map.StringMap;
@@ -29,8 +32,8 @@ import com.thruzero.common.core.utils.StringUtilsExt;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="themeStateBean")
-@javax.faces.bean.SessionScoped
+@ManagedBean(name="themeStateBean")
+@SessionScoped
 public class ThemeStateBean implements Serializable {
   private static final long serialVersionUID = 1L;
 

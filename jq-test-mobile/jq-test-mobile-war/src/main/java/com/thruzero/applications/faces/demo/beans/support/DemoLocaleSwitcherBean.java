@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.model.SelectItem;
 
 /**
@@ -28,8 +30,8 @@ import javax.faces.model.SelectItem;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="demoLocaleSwitcherBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="demoLocaleSwitcherBean")
+@RequestScoped
 public class DemoLocaleSwitcherBean implements Serializable {
   private static final long serialVersionUID = 1L;
 

@@ -48,7 +48,7 @@
   <ui:define name="content">
     <jqmb:basicPanel headerText="#{simplePanelBean.dynamicPanelHelper.panelNode.find('title').value}" dataCollapsed="false" dataMini="true">
       <ui:define name="panelBody">
-        <h:outputText value="#{simplePanelBean.dynamicPanelHelper.panelNode.find('contents').valueTransformer.asRichText}" escape="false" />
+        <h:outputText value="#{simplePanelBean.dynamicPanelHelper.panelNode.find('contents').text}" escape="false" />
       </ui:define>
     </jqmb:basicPanel>
   </ui:define>

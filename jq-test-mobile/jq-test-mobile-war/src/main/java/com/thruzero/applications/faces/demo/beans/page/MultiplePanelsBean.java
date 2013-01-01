@@ -16,6 +16,8 @@
 package com.thruzero.applications.faces.demo.beans.page;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import com.thruzero.common.core.infonode.InfoNodeElement;
 import com.thruzero.common.core.locator.ServiceLocator;
@@ -29,14 +31,14 @@ import com.thruzero.domain.service.InfoNodeService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="multiplePanelsBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="multiplePanelsBean")
+@RequestScoped
 public class MultiplePanelsBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 
   private static final Class<InfoNodeService> SERVICE_CLASS = InfoNodeService.class;
 
-  private InfoNodeElement movies;
+  private InfoNodeElement notes;
 
   @PostConstruct
   public void initBean() {
@@ -45,19 +47,19 @@ public class MultiplePanelsBean extends AbstractDemoPageBean {
     initInfoDialog(service, new UrlBean("/apps/demo/multiplePanels.jsf", true));
   }
 
-  public InfoNodeElement getMovies() {
-    ensureMovies();
+  public InfoNodeElement getNotes() {
+    ensureNotes();
 
-    return movies;
+    return notes;
   }
 
-  private void ensureMovies() {
-    if (movies == null) {
+  private void ensureNotes() {
+    if (notes == null) {
       // For the demo app, this is configured for Hibernate or JPA.
       InfoNodeService infoNodeService = ServiceLocator.locate(SERVICE_CLASS); // locate version specified in config file (should be using Hibernate or JPA)
-      EntityPath nodePath = new EntityPath("/jcat/devRes/", "movies.xml");
+      EntityPath nodePath = new EntityPath("/jq-test-mobile/devRes/", "notes.xml");
 
-      movies = infoNodeService.getInfoNode(nodePath);
+      notes = infoNodeService.getInfoNode(nodePath);
     }
   }
 

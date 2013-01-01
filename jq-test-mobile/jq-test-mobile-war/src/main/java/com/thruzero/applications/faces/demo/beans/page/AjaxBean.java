@@ -3,6 +3,10 @@ package com.thruzero.applications.faces.demo.beans.page;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import org.apache.commons.lang3.StringUtils;
@@ -25,8 +29,8 @@ import com.thruzero.domain.service.InfoNodeService;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name="ajaxBean")
-@javax.faces.bean.RequestScoped
+@ManagedBean(name="ajaxBean")
+@RequestScoped
 public class AjaxBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 
@@ -36,7 +40,7 @@ public class AjaxBean extends AbstractDemoPageBean {
 
   private TzInputTextarea detailsInputTextarea;
 
-  @javax.faces.bean.ManagedProperty(value="#{ajaxStateBean}")
+  @ManagedProperty(value="#{ajaxStateBean}")
   private AjaxStateBean ajaxStateBean;
 
   // ----------------------------------------------------
@@ -73,13 +77,13 @@ public class AjaxBean extends AbstractDemoPageBean {
   // AjaxStateBean
   // ----------------------------------------------------
 
-  @javax.faces.bean.ManagedBean(name="ajaxStateBean")
-  @javax.faces.bean.SessionScoped
+  @ManagedBean(name="ajaxStateBean")
+  @SessionScoped
   public static class AjaxStateBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int sequentialTextIndex;
-    private int selectedMovieId = 1;
+    private int selectedNoteId = 1;
 
     public int getNextIndex() {
       if (sequentialTextIndex++ >= 3) {
@@ -89,12 +93,12 @@ public class AjaxBean extends AbstractDemoPageBean {
       return sequentialTextIndex;
     }
 
-    public int getSelectedMovieId() {
-      return selectedMovieId;
+    public int getSelectedNoteId() {
+      return selectedNoteId;
     }
 
-    public void setSelectedMovieId(int selectedMovieId) {
-      this.selectedMovieId = selectedMovieId;
+    public void setSelectedNoteId(int selectedNoteId) {
+      this.selectedNoteId = selectedNoteId;
     }
   }
 
@@ -140,29 +144,29 @@ public class AjaxBean extends AbstractDemoPageBean {
     return result;
   }
 
-  public String getSelectedMovie() throws JDOMException {
+  public String getSelectedNote() throws JDOMException {
     String result;
-    int id = ajaxStateBean.getSelectedMovieId();
+    int id = ajaxStateBean.getSelectedNoteId();
 
     InfoNodeService infoNodeService = ServiceLocator.locate(SERVICE_CLASS); // locate version specified in config file (should be using Hibernate or JPA)
-    EntityPath nodePath = new EntityPath("/jcat/devRes/", "movies.xml");
-    InfoNodeElement movies = infoNodeService.getInfoNode(nodePath);
-    movies.enableRootNode();
-    InfoNodeElement child = (InfoNodeElement)movies.find("/movies/movie[@id='" + id + "']");
+    EntityPath nodePath = new EntityPath("/jq-test-mobile/devRes/", "notes.xml");
+    InfoNodeElement notes = infoNodeService.getInfoNode(nodePath);
+    notes.enableRootNode();
+    InfoNodeElement child = (InfoNodeElement)notes.find("/notes/note[@id='" + id + "']");
 
     if (child == null) {
-      result = "Movie with ID '" + id + "' was not found.";
+      result = "Note with ID '" + id + "' was not found.";
     } else {
-      result = child.getValueTransformer().getAsRichText();
+      result = child.getText();
     }
 
     return result;
   }
 
-  public void showSelectedMovieListener(AjaxBehaviorEvent event) {
+  public void showSelectedNoteListener(AjaxBehaviorEvent event) {
     String id = event.getComponent().getId();
     int selectedTextIndex = Integer.parseInt(StringUtils.substring(id, 2));
-    ajaxStateBean.setSelectedMovieId(selectedTextIndex);
+    ajaxStateBean.setSelectedNoteId(selectedTextIndex);
   }
 
   // IoC functions ///////////////////////////////////////////////////////

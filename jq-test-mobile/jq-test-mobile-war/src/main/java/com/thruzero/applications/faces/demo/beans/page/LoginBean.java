@@ -16,6 +16,8 @@
 package com.thruzero.applications.faces.demo.beans.page;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
 
@@ -39,8 +41,8 @@ import com.thruzero.common.jsf.utils.MessageUtils;
  *
  * @author George Norman
  */
-@javax.faces.bean.ManagedBean(name = "loginBean")
-@javax.faces.bean.ViewScoped
+@ManagedBean(name = "loginBean")
+@ViewScoped
 public class LoginBean extends AbstractDemoPageBean {
   private static final long serialVersionUID = 1L;
 
