@@ -80,7 +80,6 @@
 
   <section name="com.thruzero.common.core.provider.Provider">
     <entry key="com.thruzero.common.core.provider.ResourceProvider" value="com.thruzero.applications.faces.demo.provider.DemoStateBeanResourceProvider" />
-    <entry key="com.thruzero.common.jsf.support.provider.RootNodeCacheBuilderProvider" value="com.thruzero.common.jsf.support.provider.XmlRootNodeCacheBuilderProvider" />
     <entry key="com.thruzero.domain.provider.DataStoreInfoProvider" value="com.thruzero.applications.faces.demo.provider.DemoDataStoreInfoProvider" />
   </section>
 
