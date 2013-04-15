@@ -9,7 +9,7 @@
 
   <section name="environment">
     <!-- Path to the data store's parent directory; "demo-data-store" is appended to this in each of the base config files. -->
-    <entry key="parentStorePath" value="C:/Users/George/Projects/git-projects/git/jq-test-mobile/jq-test-mobile"/>
+    <entry key="parentStorePath" value="/Users/george/git/jq-test-mobile/jq-test-mobile"/>
 
     <!-- database user -->
     <entry key="jdbcUser" value="testy" />
